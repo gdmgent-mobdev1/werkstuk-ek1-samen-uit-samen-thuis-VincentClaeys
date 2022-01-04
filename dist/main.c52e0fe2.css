@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+.header {
+  height: 40vh;
+  position: relative;
+}
+.header__photo {
+  width: 100%;
+  object-fit: cover;
+  height: 40vh;
+}
+.header__logo {
+  width: 30%;
+  object-fit: cover;
+  position: absolute;
+}
+.header__slogan {
+  font-family: "Righteous", cursive;
+  color: #495EAA;
+  position: absolute;
+  font-size: 2rem;
+  padding-left: 2vw;
+  width: 50vw;
+  margin-left: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.welcomeBackContainer {
+  background-color: #495EAA;
+  height: 60vh;
+}
+.welcomeBackContainer__sloganOne {
+  font-family: "Righteous", cursive;
+  color: #FFFFFF;
+  margin-left: 1.5rem;
+  font-size: 3rem;
+  width: 50vw;
+  padding-top: 30px;
+}
+.welcomeBackContainer__wrapperFields {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  margin-left: 1.5rem;
+}
+.welcomeBackContainer__wrapperFields--inputfieldOne {
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  border-color: #FFFFFF;
+  color: #495EAA;
+}
+.welcomeBackContainer__wrapperFields--inputfieldTwo {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  border-color: #FFFFFF;
+  color: #495EAA;
+}
+.welcomeBackContainer__btnLogin {
+  font-family: "Righteous", cursive;
+  font-size: 0.5rem;
+  margin-left: 1.5rem;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  background-color: #FFFFFF;
+  color: #495EAA;
+  display: flex;
+}
+.welcomeBackContainer__btnFacebook {
+  font-family: "Righteous", cursive;
+  height: 30px;
+  line-height: 30px;
+  width: 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 50%;
+  color: #495EAA;
+  background-color: #FFFFFF;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 2rem;
+  margin-left: 1.5rem;
+}
+.welcomeBackContainer__btnGoogle {
+  font-family: "Righteous", cursive;
+  height: 30px;
+  line-height: 30px;
+  width: 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 50%;
+  color: #495EAA;
+  background-color: #FFFFFF;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 2rem;
+  margin-left: 0.5rem;
+}
+.welcomeBackContainer__text {
+  font-family: "Righteous", cursive;
+  color: #FFFFFF;
+  margin-top: 2rem;
+  margin-left: 1.5rem;
+}
+.welcomeBackContainer__btnRegister {
+  font-family: "Righteous", cursive;
+  font-size: 0.5rem;
+  margin-left: 1.5rem;
+  margin-top: 1rem;
+  padding: 0.3rem;
+  border-radius: 0.4rem;
+  background-color: #FFFFFF;
+  color: #495EAA;
+  display: flex;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+/*# sourceMappingURL=/main.c52e0fe2.css.map */

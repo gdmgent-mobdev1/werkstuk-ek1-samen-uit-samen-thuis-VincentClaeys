@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+
+// base
+
+@use './base/_fonts';
+
+
+//pages
+
+@use "./pages/loginPage";
+
+
+//main page
+
+@use './_mainPage.scss';

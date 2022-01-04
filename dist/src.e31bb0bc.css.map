@@ -1,0 +1,1 @@
+{"version":3,"sources":["sass/main.scss"],"names":[],"mappings":"AAKA,IAAI,CAAJ,eAAI;AAKJ,IAAI,CAAJ,mBAAI;AAKJ,IAAI,CAAJ,cAAI","file":"src.e31bb0bc.css","sourceRoot":"../src","sourcesContent":["@charset \"UTF-8\";\n\n\n// base\n\n@use './base/_fonts';\n\n\n//pages\n\n@use \"./pages/loginPage\";\n\n\n//main page\n\n@use './_main.scss';"]}

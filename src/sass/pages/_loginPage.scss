@@ -1,0 +1,161 @@
+@use '../abstracts/_variables'as vars;
+@use '../abstracts/_functions'as func;
+
+
+@use 'sass:map';
+
+
+.header {
+
+    height: 40vh;
+    position: relative;
+
+    &__photo {
+        width: 100%;
+        object-fit: cover;
+        height: 40vh;
+
+
+    }
+
+    &__logo {
+        width: 30%;
+        object-fit: cover;
+        position: absolute;
+    }
+
+    &__slogan {
+
+        font-family: vars.$text-font;
+        color: map.get($map: vars.$colors, $key: color2);
+        position: absolute;
+        font-size: 2rem;
+        padding-left: 2vw;
+        width: 50vw;
+        margin-left: 1.5rem;
+        margin-top: 2.5rem;
+
+
+    }
+}
+
+// .titleHeader {
+
+
+
+.welcomeBackContainer {
+    background-color: map.get($map: vars.$colors, $key: color2);
+    height: 60vh;
+
+
+
+    &__sloganOne {
+        font-family: vars.$text-font;
+        color: map.get($map: vars.$colors, $key: color3);
+        margin-left: 1.5rem;
+        font-size: 3rem;
+        width: 50vw;
+        padding-top: 30px;
+
+    }
+
+    &__wrapperFields {
+        width: 50vw;
+        display: flex;
+        flex-direction: column;
+        margin-top: 2rem;
+        margin-left: 1.5rem;
+
+
+        &--inputfieldOne {
+            padding: 0.5rem;
+            border-radius: 0.4rem;
+            border-color: map.get($map: vars.$colors, $key: color3);
+            color: map.get($map: vars.$colors, $key: color2);
+
+
+        }
+
+        &--inputfieldTwo {
+            margin-top: 1rem;
+            padding: 0.5rem;
+            border-radius: 0.4rem;
+            border-color: map.get($map: vars.$colors, $key: color3);
+            color: map.get($map: vars.$colors, $key: color2);
+
+
+        }
+
+
+    }
+
+    &__btnLogin {
+        font-family: vars.$text-font;
+        font-size: 0.5rem;
+        margin-left: 1.5rem;
+        margin-top: 1rem;
+        padding: 0.5rem;
+        border-radius: 0.4rem;
+        background-color: map.get($map: vars.$colors, $key: color3);
+        color: map.get($map: vars.$colors, $key: color2);
+        display: flex;
+
+
+    }
+
+    &__btnFacebook {
+        font-family: vars.$text-font;
+        height: 30px;
+        line-height: 30px;
+        width: 30px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border-radius: 50%;
+        color: map.get($map: vars.$colors, $key: color2);
+        background-color: map.get($map: vars.$colors, $key: color3);
+        text-align: center;
+        cursor: pointer;
+        margin-top: 2rem;
+        margin-left: 1.5rem;
+    }
+
+    &__btnGoogle {
+        font-family: vars.$text-font;
+        height: 30px;
+        line-height: 30px;
+        width: 30px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border-radius: 50%;
+        color: map.get($map: vars.$colors, $key: color2);
+        background-color: map.get($map: vars.$colors, $key: color3);
+        text-align: center;
+        cursor: pointer;
+        margin-top: 2rem;
+        margin-left: 0.5rem;
+    }
+
+    &__text {
+        font-family: vars.$text-font;
+        color: map.get($map: vars.$colors, $key: color3);
+        margin-top: 2rem;
+        margin-left: 1.5rem;
+
+    }
+
+    &__btnRegister {
+        font-family: vars.$text-font;
+        font-size: 0.5rem;
+        margin-left: 1.5rem;
+        margin-top: 1rem;
+        padding: 0.3rem;
+        border-radius: 0.4rem;
+        background-color: map.get($map: vars.$colors, $key: color3);
+        color: map.get($map: vars.$colors, $key: color2);
+        display: flex;
+
+
+    }
+
+
+}
