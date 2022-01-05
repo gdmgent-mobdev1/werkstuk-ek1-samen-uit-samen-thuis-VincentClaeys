@@ -15,6 +15,7 @@
 
 // export default App;
 
+import initFirebase from './firebase';
 import Component from './library/Component';
 import Router from './Router';
 
@@ -22,6 +23,7 @@ class App {
   constructor(parent) {
     this.parent = parent;
     this.components = [];
+    initFirebase();
   }
 
   // eslint-disable-next-line class-methods-use-this

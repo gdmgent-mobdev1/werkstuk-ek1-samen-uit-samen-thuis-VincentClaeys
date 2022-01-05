@@ -11,6 +11,13 @@ const Elements = {
     return button;
   },
 
+  createIcon({ classNames = [] }) {
+    const icon = document.createElement('i');
+    if (classNames.length) icon.classList.add(...classNames);
+
+    return icon;
+  },
+
   createHeader({ textContent = ' ', className }) {
     const header = document.createElement('h1');
     header.textContent = textContent;

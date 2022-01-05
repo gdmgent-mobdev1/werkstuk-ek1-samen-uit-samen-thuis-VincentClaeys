@@ -65,6 +65,7 @@ class HomePageComponent extends Component {
     const loginButton = Elements.createButton({
       className: 'welcomeBackContainer__btnLogin',
       textContent: 'Login',
+
     });
     // facebook button
     const loginButtonFacebook = Elements.createButton({

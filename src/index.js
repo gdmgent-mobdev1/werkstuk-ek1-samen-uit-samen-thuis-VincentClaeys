@@ -21,6 +21,7 @@
 // Element Helpers
 import App from './App';
 import { HomePageComponent } from './components';
+import DashboardComponent from './components/dashboard';
 import ReigsterPageComponent from './components/registerPage';
 
 const initApp = () => {
@@ -29,6 +30,7 @@ const initApp = () => {
   const app = new App(appContainer);
   app.addComponent(new HomePageComponent());
   app.addComponent(new ReigsterPageComponent());
+  app.addComponent(new DashboardComponent());
 };
 
 window.addEventListener('load', initApp);

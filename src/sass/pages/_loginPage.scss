@@ -10,6 +10,8 @@
     height: 40vh;
     position: relative;
 
+
+
     &__photo {
         width: 100%;
         object-fit: cover;
@@ -19,21 +21,22 @@
     }
 
     &__logo {
-        width: 30%;
+        width: 7rem;
         object-fit: cover;
         position: absolute;
+
     }
 
-    &__slogan {
-
+    &__btnLogOut {
         font-family: vars.$text-font;
-        color: map.get($map: vars.$colors, $key: color2);
-        position: absolute;
-        font-size: 2rem;
-        padding-left: 2vw;
-        width: 50vw;
+        font-size: 0.5rem;
         margin-left: 1.5rem;
-        margin-top: 2.5rem;
+        margin-top: 1rem;
+        padding: 0.5rem;
+        border-radius: 0.4rem;
+        background-color: map.get($map: vars.$colors, $key: color3);
+        color: map.get($map: vars.$colors, $key: color2);
+        justify-content: space-between;
 
 
     }

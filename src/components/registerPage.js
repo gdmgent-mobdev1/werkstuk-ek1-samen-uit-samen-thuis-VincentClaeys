@@ -1,5 +1,5 @@
 /**
- *HomePage Component
+ *registerPage Component
  */
 
 /* eslint-disable class-methods-use-this */
@@ -42,7 +42,7 @@ class ReigsterPageComponent extends Component {
       className: 'welcomeBackContainer__sloganOne',
     });
     const textContainerTwo = Elements.createText({
-      textContent: "Don't have an account yet? ",
+      textContent: 'Already have an account? ',
       className: 'welcomeBackContainer__text',
     });
     // inputfield one
@@ -64,24 +64,14 @@ class ReigsterPageComponent extends Component {
     // Login button
     const loginButton = Elements.createButton({
       className: 'welcomeBackContainer__btnLogin',
-      textContent: 'Login',
-    });
-    // facebook button
-    const loginButtonFacebook = Elements.createButton({
-      className: 'welcomeBackContainer__btnFacebook',
-      textContent: 'f',
-    });
+      textContent: 'Register',
 
-    // google button
-    const loginButtonGoogle = Elements.createButton({
-      className: 'welcomeBackContainer__btnGoogle',
-      textContent: 'G',
     });
 
     // btn Register
     const registerButton = Elements.createButton({
       className: 'welcomeBackContainer__btnRegister',
-      textContent: 'Register here',
+      textContent: 'Login here',
     });
 
     // wrapper inputfields
@@ -94,7 +84,7 @@ class ReigsterPageComponent extends Component {
     const homePageWrapperTwo = Elements.createContainer({
       className: 'welcomeBackContainer',
       children: [headerContainerTwo, wrapperInputFields, loginButton,
-        loginButtonFacebook, loginButtonGoogle, textContainerTwo, registerButton],
+        textContainerTwo, registerButton],
 
     });
 

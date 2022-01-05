@@ -19,5 +19,8 @@
     "node-sass": "^7.0.1",
     "parcel-bundler": "^1.9.4",
     "sass": "^1.45.2"
+  },
+  "dependencies": {
+    "firebase": "^9.6.1"
   }
 }
