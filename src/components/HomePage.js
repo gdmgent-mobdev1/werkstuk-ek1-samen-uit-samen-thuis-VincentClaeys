@@ -8,6 +8,8 @@ import Component from '../library/Component';
 import Elements from '../library/Elements';
 import photoOne from '../images/backgroundImages2.png';
 import logo from '../images/logo.png';
+import Router from '../Router';
+import Authenticator from '../library/Authenticator';
 
 class HomePageComponent extends Component {
   constructor() {
@@ -18,6 +20,7 @@ class HomePageComponent extends Component {
   }
 
   render() {
+    this.clearComponent();
     // content wrapper One
     const HomepageContainer = document.createElement('div');
     const header = Elements.createImage({
@@ -50,6 +53,7 @@ class HomePageComponent extends Component {
       className: 'welcomeBackContainer__wrapperFields--inputfieldOne',
       type: 'email',
       placeholder: 'username',
+      id: 'email',
     });
 
     // inputfield Two
@@ -59,13 +63,17 @@ class HomePageComponent extends Component {
       type: 'password',
       text: 'password',
       placeholder: 'password',
+      id: 'pwd',
     });
 
     // Login button
     const loginButton = Elements.createButton({
       className: 'welcomeBackContainer__btnLogin',
       textContent: 'Login',
-
+      onClick: () => {
+        const auth = new Authenticator();
+        auth.login();
+      },
     });
     // facebook button
     const loginButtonFacebook = Elements.createButton({
@@ -77,12 +85,19 @@ class HomePageComponent extends Component {
     const loginButtonGoogle = Elements.createButton({
       className: 'welcomeBackContainer__btnGoogle',
       textContent: 'G',
+      onClick: () => {
+        const auth = new Authenticator();
+        auth.loginWithGoogle();
+      },
     });
 
     // btn Register
     const registerButton = Elements.createButton({
       className: 'welcomeBackContainer__btnRegister',
       textContent: 'Register here',
+      onClick: () => {
+        Router.getRouter().navigate('/register');
+      },
     });
 
     // wrapper inputfields

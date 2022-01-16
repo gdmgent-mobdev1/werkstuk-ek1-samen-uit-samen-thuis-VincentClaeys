@@ -7,6 +7,8 @@
 import Component from '../library/Component';
 import Elements from '../library/Elements';
 import logo from '../images/logo.png';
+import Router from '../Router';
+import Authenticator from '../library/Authenticator';
 
 class DashboardComponent extends Component {
   constructor() {
@@ -18,6 +20,7 @@ class DashboardComponent extends Component {
 
   render() {
     // content wrapper One
+    this.clearComponent();
 
     const dashboardContainer = document.createElement('div');
     const header = Elements.createImage({
@@ -28,6 +31,10 @@ class DashboardComponent extends Component {
     const logOutBtn = Elements.createButton({
       className: 'dashboard__btnLogOut',
       textContent: 'Log out',
+      onClick: () => {
+        const auth = new Authenticator();
+        auth.logOut();
+      },
     });
 
     // wrapper One
@@ -44,6 +51,7 @@ class DashboardComponent extends Component {
     const textContainerTwo = Elements.createText({
       textContent: 'Nice to have you back! ',
       className: 'dashboardContainer__text',
+
     });
 
     // wrapper Two
@@ -59,6 +67,9 @@ class DashboardComponent extends Component {
     const contentForContainerEvents = Elements.createButton({
       textContent: ' VIEW EVENTS',
       className: 'AllContainers__divOne--text',
+      onClick: () => {
+        Router.getRouter().navigate('/events');
+      },
 
     });
 
@@ -78,12 +89,15 @@ class DashboardComponent extends Component {
     });
 
     const contentForContainerEventsTwo = Elements.createButton({
-      textContent: ' CHANGE YOUR EVENT',
+      textContent: 'MEMORIES',
       className: 'AllContainers__divTwo--text',
+      onClick: () => {
+        Router.getRouter().navigate('/memories');
+      },
 
     });
 
-    const iconTwo = Elements.createIcon({ classNames: ['fas', 'fa-cog', 'input-icon'] });
+    const iconTwo = Elements.createIcon({ classNames: ['fas', 'fa-photo-video', 'input-icon'] });
 
     const btnAndIconTwo = Elements.createContainer({
       className: 'AllContainers__divTwo--content',
@@ -94,17 +108,84 @@ class DashboardComponent extends Component {
       className: 'AllContainers__divTwo',
       children: [btnAndIconTwo],
     });
+    const contentForContainerEventsThree = Elements.createButton({
+      textContent: ' SEARCH A PLACE TO PARTY',
+      className: 'AllContainers__divThree--text',
+      onClick: () => {
+        Router.getRouter().navigate('/searchParty');
+      },
+
+    });
+
+    const iconThree = Elements.createIcon({ classNames: ['fas', 'fa-search-location', 'input-icon'] });
+
+    const btnAndIconThree = Elements.createContainer({
+      className: 'AllContainers__divThree--content',
+      children: [iconThree, contentForContainerEventsThree],
+
+    });
     const containerThree = Elements.createContainer({
       className: 'AllContainers__divThree',
+      children: [btnAndIconThree],
     });
+
+    const contentForContainerEventsFour = Elements.createButton({
+      textContent: 'TAKE CARE',
+      className: 'AllContainers__divFour--text',
+      onClick: () => {
+        Router.getRouter().navigate('/takeCare');
+      },
+
+    });
+
+    const iconFour = Elements.createIcon({ classNames: ['fas', 'fa-hands-helping', 'input-icon'] });
+
+    const btnAndIconFour = Elements.createContainer({
+      className: 'AllContainers__divFour--content',
+      children: [iconFour, contentForContainerEventsFour],
+
+    });
+
     const containerFour = Elements.createContainer({
       className: 'AllContainers__divFour',
+      children: [btnAndIconFour],
+    });
+
+    const contentForContainerEventsFive = Elements.createButton({
+      textContent: 'CHANGE PROFILE SETTINGS',
+      className: 'AllContainers__divFive--text',
+      onClick: () => {
+        Router.getRouter().navigate('/profileSettings');
+      },
+
+    });
+
+    const iconFive = Elements.createIcon({ classNames: ['fas', 'fa-cog', 'input-icon'] });
+
+    const btnAndIconFive = Elements.createContainer({
+      className: 'AllContainers__divFive--content',
+      children: [iconFive, contentForContainerEventsFive],
+
     });
     const containerFive = Elements.createContainer({
       className: 'AllContainers__divFive',
+      children: [btnAndIconFive],
+    });
+
+    const contentForContainerEventsSix = Elements.createButton({
+      textContent: ' PANIC BUTTON',
+      className: 'panicButton',
+
+    });
+
+    const btnAndIconSix = Elements.createContainer({
+      className: 'AllContainers__divSix--content',
+      children: [contentForContainerEventsSix],
+
     });
     const containerSix = Elements.createContainer({
       className: 'AllContainers__divSix',
+      children: [btnAndIconSix],
     });
 
     // content wrapper Three

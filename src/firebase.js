@@ -1,6 +1,7 @@
 /**
  *  Firebase initializer
  */
+import 'regenerator-runtime/runtime';
 
 import { initializeApp } from 'firebase/app';
 
