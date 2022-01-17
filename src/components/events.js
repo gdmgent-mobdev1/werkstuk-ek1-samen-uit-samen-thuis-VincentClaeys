@@ -9,7 +9,7 @@ import Elements from '../library/Elements';
 import logo from '../images/logo.png';
 import Router from '../Router';
 import Authenticator from '../library/Authenticator';
-import Crud from '../library/Crud';
+
 import CreateCard from '../library/createCard';
 
 class EventsComponent extends Component {
@@ -60,62 +60,54 @@ class EventsComponent extends Component {
 
     });
 
-    // inputifelds
-    const inputUserId = Elements.createInput({
-      type: 'text',
-      id: 'userID',
-      placeholder: 'userID',
-    });
-    const firstnameInput = Elements.createInput({
-      type: 'text',
-      id: 'firstName',
-      placeholder: 'firstName',
-    });
-    const lastNameInput = Elements.createInput({
-      type: 'text',
-      id: 'lastName',
-      placeholder: 'lastName',
-    });
-
-    const createEventBtn = Elements.createButton({
-      textContent: 'CreateFirestore',
-      id: 'CreateFirestore',
-      onClick: () => {
-        const auth = new Crud();
-        auth.addUser();
-      },
-    });
-    const deleteEventBtn = Elements.createButton({
-      textContent: 'DeleteFirestore',
-      id: 'DeleteFirestore',
-    });
-    const laatOnsHopen = Elements.createButton({
-      textContent: 'laatOnsHopen',
-      id: 'laatOnsHopen',
-      onClick: () => {
-        const komop = new CreateCard();
-        komop.fetchAllData();
-      },
-    });
-
     const createdEvents = Elements.createList({
       id: 'list',
-      className: 'dashboardContaine__list',
-
+      className: 'listItemsContainer',
     });
+
     // wrapper Two
     const homePageWrapperTwo = Elements.createContainer({
       className: 'dashboardContainer',
       children: [headerContainerTwo,
-        textContainerTwo, inputUserId, firstnameInput, lastNameInput,
-        createEventBtn, deleteEventBtn, laatOnsHopen, createdEvents],
+        textContainerTwo],
 
+    });
+
+    // content wrapper three
+    const createAnEventBtn = Elements.createButton({
+      className: 'eventsPageWrapperThree__createEventContainer--createEventBtn',
+      textContent: 'Create An Event here',
+      onClick: () => {
+        Router.getRouter().navigate('/createEvent');
+      },
+
+    });
+    const ShowEventsBtn = Elements.createButton({
+      className: 'eventsPageWrapperThree__createEventContainer--ShowEventsBtn',
+      textContent: 'Show all partys',
+      onClick: () => {
+        const komop = new CreateCard();
+        komop.fetchAllData();
+      },
+
+    });
+
+    const createAnEvent = Elements.createContainer({
+      className: 'eventsPageWrapperThree__createEventContainer',
+      children: [createAnEventBtn, ShowEventsBtn],
+    });
+
+    // wrapper three
+    const eventsPageWrapperThree = Elements.createContainer({
+      className: 'eventsPageWrapperThree',
+      children: [createAnEvent],
     });
 
     // combine two wrappers
     const createContainer = Elements.createContainer({
       className: 'togheter',
-      children: [homePageWrapperOne, homePageWrapperTwo],
+      children: [homePageWrapperOne, homePageWrapperTwo, eventsPageWrapperThree,
+        createdEvents],
     });
 
     EventsContainer.appendChild(createContainer);

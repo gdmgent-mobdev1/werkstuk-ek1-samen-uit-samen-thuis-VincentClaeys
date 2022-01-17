@@ -28,6 +28,8 @@ import MemoriesComponent from './components/memories';
 import SearchPartyComponent from './components/searchParty';
 import TakeCareComponent from './components/takeCare';
 import ProfileSettingsComponent from './components/profileSettings';
+import CreateEventComponent from './components/createEvents';
+import { UploadPhotosComponent } from './components';
 
 const initApp = () => {
   const appContainer = document.getElementById('container');
@@ -41,6 +43,8 @@ const initApp = () => {
   app.addComponent(new SearchPartyComponent());
   app.addComponent(new TakeCareComponent());
   app.addComponent(new ProfileSettingsComponent());
+  app.addComponent(new CreateEventComponent());
+  app.addComponent(new UploadPhotosComponent());
 };
 
 window.addEventListener('load', initApp);

@@ -4,31 +4,24 @@ class Crud {
   // eslint-disable-next-line class-methods-use-this
   addUser() {
     const firestore = getFirestore();
-    const userIDVar = document.getElementById('userID').value;
-    const firstNameVar = document.getElementById('firstName').value;
-    const lastNameVar = document.getElementById('lastName').value;
+    const partyName = document.getElementById('userID').value;
+    const from = document.getElementById('firstName').value;
+    const date = document.getElementById('lastName').value;
 
-    const ref = doc(firestore, 'users', userIDVar);
+    const ref = doc(firestore, 'pelerr', partyName);
 
     setDoc(ref, {
-      userID: userIDVar,
-      firstName: firstNameVar,
-      lastName: lastNameVar,
+      PartyName: partyName,
+      From: from,
+      Date: date,
       // profileURL: downloadURLVar,
       // imageFilename: namebox.value + ',' + extLab.innerHTML
     })
-      .then(() => {
-        // eslint-disable-next-line no-alert
-        alert('record added');
-      })
+
       .catch((error) => {
         // eslint-disable-next-line no-alert
         alert(`error${error}`);
       });
-
-    const h = document.createElement('H1'); // Create a <h1> element
-    const t = document.createTextNode('Hello World'); // Create a text node
-    h.appendChild(t);
   }
 }
 export default Crud;

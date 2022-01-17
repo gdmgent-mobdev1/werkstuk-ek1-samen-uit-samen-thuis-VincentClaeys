@@ -1,32 +1,30 @@
 /* eslint-disable no-underscore-dangle */
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
-function vincentnt(userID, firstName, lastName, fileName, URLPath) {
+function vincentnt(PartyName, From, Date) {
   const ul = document.getElementById('list');
-  const header = document.createElement('h2');
+
   const _userID = document.createElement('li');
-  const _firstName = document.createElement('li');
-  const _lastName = document.createElement('li');
-  const _picture = document.createElement('img');
-  const _fileName = document.createElement('li');
-  const _URLPath = document.createElement('li');
-  _picture.src = URLPath;
+  const _fullName = document.createElement('li');
+  const _theDate = document.createElement('li');
+  const btn = document.createElement('button');
+  const bt2n = document.createElement('div');
 
-  _userID.innerHTML = `UserID : ${userID}`;
+  _userID.innerHTML = ` ${PartyName}`;
+  _userID.className = 'listItemsContainer__content--partyName';
+  _fullName.innerHTML = `Party From : ${From}`;
+  _fullName.className = 'listItemsContainer__content--partyFrom';
+  _theDate.innerHTML = `Date : ${Date}`;
+  _theDate.className = 'listItemsContainer__content--date';
+  btn.textContent = 'Details';
+  btn.className = 'listItemsContainer__content--btnDetail';
+  bt2n.className = 'listItemsContainer__content';
 
-  _firstName.innerHTML = `Firstname : ${firstName}`;
-  _lastName.innerHTML = `Lastname : ${lastName}`;
-  // _picture.innerHTML = 'Picture : ' + fileName;
-  _fileName.innerHTML = `filename : ${fileName}`;
-  _URLPath.innerHTML = `URL Path : ${URLPath}`;
-
-  ul.appendChild(header);
-  ul.appendChild(_userID);
-  ul.appendChild(_firstName);
-  ul.appendChild(_lastName);
-  ul.appendChild(_picture);
-  ul.appendChild(_fileName);
-  ul.appendChild(_URLPath);
+  ul.appendChild(bt2n);
+  bt2n.appendChild(_userID);
+  bt2n.appendChild(_fullName);
+  bt2n.appendChild(_theDate);
+  bt2n.appendChild(btn);
 }
 
 class CreateCard {
@@ -35,14 +33,12 @@ class CreateCard {
   // eslint-disable-next-line class-methods-use-this
   async fetchAllData() {
     const firestore = getFirestore();
-    const querySnapshot = await getDocs(collection(firestore, 'users'));
+    const querySnapshot = await getDocs(collection(firestore, 'Events'));
     querySnapshot.forEach((doc) => {
-      const { userID } = doc.data();
-      const { firstName } = doc.data();
-      const { lastName } = doc.data();
-      const fileName = doc.data().imageFilename;
-      const URLPath = doc.data().profileURL;
-      vincentnt(userID, firstName, lastName, fileName, URLPath);
+      const { PartyName } = doc.data();
+      const { From } = doc.data();
+      const { Date } = doc.data();
+      vincentnt(PartyName, From, Date);
     });
   }
 }

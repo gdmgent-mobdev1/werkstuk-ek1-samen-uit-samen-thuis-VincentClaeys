@@ -51188,63 +51188,7 @@ Object.keys(_firestore).forEach(function (key) {
     }
   });
 });
-},{"@firebase/firestore":"../node_modules/@firebase/firestore/dist/index.esm2017.js"}],"library/Crud.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _firestore = require("firebase/firestore");
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-
-var Crud = /*#__PURE__*/function () {
-  function Crud() {
-    _classCallCheck(this, Crud);
-  }
-
-  _createClass(Crud, [{
-    key: "addUser",
-    value: // eslint-disable-next-line class-methods-use-this
-    function addUser() {
-      var firestore = (0, _firestore.getFirestore)();
-      var userIDVar = document.getElementById('userID').value;
-      var firstNameVar = document.getElementById('firstName').value;
-      var lastNameVar = document.getElementById('lastName').value;
-      var ref = (0, _firestore.doc)(firestore, 'users', userIDVar);
-      (0, _firestore.setDoc)(ref, {
-        userID: userIDVar,
-        firstName: firstNameVar,
-        lastName: lastNameVar // profileURL: downloadURLVar,
-        // imageFilename: namebox.value + ',' + extLab.innerHTML
-
-      }).then(function () {
-        // eslint-disable-next-line no-alert
-        alert('record added');
-      }).catch(function (error) {
-        // eslint-disable-next-line no-alert
-        alert("error".concat(error));
-      });
-      var h = document.createElement('H1'); // Create a <h1> element
-
-      var t = document.createTextNode('Hello World'); // Create a text node
-
-      h.appendChild(t);
-    }
-  }]);
-
-  return Crud;
-}();
-
-var _default = Crud;
-exports.default = _default;
-},{"firebase/firestore":"../node_modules/firebase/firestore/dist/index.esm.js"}],"library/createCard.js":[function(require,module,exports) {
+},{"@firebase/firestore":"../node_modules/@firebase/firestore/dist/index.esm2017.js"}],"library/createCard.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -51264,36 +51208,31 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
-function vincentnt(userID, firstName, lastName, fileName, URLPath) {
+function vincentnt(PartyName, From, Date) {
   var ul = document.getElementById('list');
-  var header = document.createElement('h2');
 
   var _userID = document.createElement('li');
 
-  var _firstName = document.createElement('li');
+  var _fullName = document.createElement('li');
 
-  var _lastName = document.createElement('li');
+  var _theDate = document.createElement('li');
 
-  var _picture = document.createElement('img');
-
-  var _fileName = document.createElement('li');
-
-  var _URLPath = document.createElement('li');
-
-  _picture.src = URLPath;
-  _userID.innerHTML = "UserID : ".concat(userID);
-  _firstName.innerHTML = "Firstname : ".concat(firstName);
-  _lastName.innerHTML = "Lastname : ".concat(lastName); // _picture.innerHTML = 'Picture : ' + fileName;
-
-  _fileName.innerHTML = "filename : ".concat(fileName);
-  _URLPath.innerHTML = "URL Path : ".concat(URLPath);
-  ul.appendChild(header);
-  ul.appendChild(_userID);
-  ul.appendChild(_firstName);
-  ul.appendChild(_lastName);
-  ul.appendChild(_picture);
-  ul.appendChild(_fileName);
-  ul.appendChild(_URLPath);
+  var btn = document.createElement('button');
+  var bt2n = document.createElement('div');
+  _userID.innerHTML = " ".concat(PartyName);
+  _userID.className = 'listItemsContainer__content--partyName';
+  _fullName.innerHTML = "Party From : ".concat(From);
+  _fullName.className = 'listItemsContainer__content--partyFrom';
+  _theDate.innerHTML = "Date : ".concat(Date);
+  _theDate.className = 'listItemsContainer__content--date';
+  btn.textContent = 'Details';
+  btn.className = 'listItemsContainer__content--btnDetail';
+  bt2n.className = 'listItemsContainer__content';
+  ul.appendChild(bt2n);
+  bt2n.appendChild(_userID);
+  bt2n.appendChild(_fullName);
+  bt2n.appendChild(_theDate);
+  bt2n.appendChild(btn);
 }
 
 var CreateCard = /*#__PURE__*/function () {
@@ -51314,23 +51253,21 @@ var CreateCard = /*#__PURE__*/function () {
               case 0:
                 firestore = (0, _firestore.getFirestore)();
                 _context.next = 3;
-                return (0, _firestore.getDocs)((0, _firestore.collection)(firestore, 'users'));
+                return (0, _firestore.getDocs)((0, _firestore.collection)(firestore, 'Events'));
 
               case 3:
                 querySnapshot = _context.sent;
                 querySnapshot.forEach(function (doc) {
                   var _doc$data = doc.data(),
-                      userID = _doc$data.userID;
+                      PartyName = _doc$data.PartyName;
 
                   var _doc$data2 = doc.data(),
-                      firstName = _doc$data2.firstName;
+                      From = _doc$data2.From;
 
                   var _doc$data3 = doc.data(),
-                      lastName = _doc$data3.lastName;
+                      Date = _doc$data3.Date;
 
-                  var fileName = doc.data().imageFilename;
-                  var URLPath = doc.data().profileURL;
-                  vincentnt(userID, firstName, lastName, fileName, URLPath);
+                  vincentnt(PartyName, From, Date);
                 });
 
               case 5:
@@ -51371,8 +51308,6 @@ var _logo = _interopRequireDefault(require("../images/logo.png"));
 var _Router = _interopRequireDefault(require("../Router"));
 
 var _Authenticator = _interopRequireDefault(require("../library/Authenticator"));
-
-var _Crud = _interopRequireDefault(require("../library/Crud"));
 
 var _createCard = _interopRequireDefault(require("../library/createCard"));
 
@@ -51452,65 +51387,52 @@ var EventsComponent = /*#__PURE__*/function (_Component) {
       var textContainerTwo = _Elements.default.createText({
         textContent: 'Check hier al jouw events! ',
         className: 'dashboardContainer__text'
-      }); // inputifelds
-
-
-      var inputUserId = _Elements.default.createInput({
-        type: 'text',
-        id: 'userID',
-        placeholder: 'userID'
       });
 
-      var firstnameInput = _Elements.default.createInput({
-        type: 'text',
-        id: 'firstName',
-        placeholder: 'firstName'
-      });
+      var createdEvents = _Elements.default.createList({
+        id: 'list',
+        className: 'listItemsContainer'
+      }); // wrapper Two
 
-      var lastNameInput = _Elements.default.createInput({
-        type: 'text',
-        id: 'lastName',
-        placeholder: 'lastName'
-      });
 
-      var createEventBtn = _Elements.default.createButton({
-        textContent: 'CreateFirestore',
-        id: 'CreateFirestore',
+      var homePageWrapperTwo = _Elements.default.createContainer({
+        className: 'dashboardContainer',
+        children: [headerContainerTwo, textContainerTwo]
+      }); // content wrapper three
+
+
+      var createAnEventBtn = _Elements.default.createButton({
+        className: 'eventsPageWrapperThree__createEventContainer--createEventBtn',
+        textContent: 'Create An Event here',
         onClick: function onClick() {
-          var auth = new _Crud.default();
-          auth.addUser();
+          _Router.default.getRouter().navigate('/createEvent');
         }
       });
 
-      var deleteEventBtn = _Elements.default.createButton({
-        textContent: 'DeleteFirestore',
-        id: 'DeleteFirestore'
-      });
-
-      var laatOnsHopen = _Elements.default.createButton({
-        textContent: 'laatOnsHopen',
-        id: 'laatOnsHopen',
+      var ShowEventsBtn = _Elements.default.createButton({
+        className: 'eventsPageWrapperThree__createEventContainer--ShowEventsBtn',
+        textContent: 'Show all partys',
         onClick: function onClick() {
           var komop = new _createCard.default();
           komop.fetchAllData();
         }
       });
 
-      var createdEvents = _Elements.default.createList({
-        id: 'list',
-        className: 'dashboardContaine__list'
-      }); // wrapper Two
+      var createAnEvent = _Elements.default.createContainer({
+        className: 'eventsPageWrapperThree__createEventContainer',
+        children: [createAnEventBtn, ShowEventsBtn]
+      }); // wrapper three
 
 
-      var homePageWrapperTwo = _Elements.default.createContainer({
-        className: 'dashboardContainer',
-        children: [headerContainerTwo, textContainerTwo, inputUserId, firstnameInput, lastNameInput, createEventBtn, deleteEventBtn, laatOnsHopen, createdEvents]
+      var eventsPageWrapperThree = _Elements.default.createContainer({
+        className: 'eventsPageWrapperThree',
+        children: [createAnEvent]
       }); // combine two wrappers
 
 
       var createContainer = _Elements.default.createContainer({
         className: 'togheter',
-        children: [homePageWrapperOne, homePageWrapperTwo]
+        children: [homePageWrapperOne, homePageWrapperTwo, eventsPageWrapperThree, createdEvents]
       });
 
       EventsContainer.appendChild(createContainer);
@@ -51523,7 +51445,115 @@ var EventsComponent = /*#__PURE__*/function (_Component) {
 
 var _default = EventsComponent;
 exports.default = _default;
-},{"../library/Component":"library/Component.js","../library/Elements":"library/Elements.js","../images/logo.png":"images/logo.png","../Router":"Router.js","../library/Authenticator":"library/Authenticator.js","../library/Crud":"library/Crud.js","../library/createCard":"library/createCard.js"}],"components/memories.js":[function(require,module,exports) {
+},{"../library/Component":"library/Component.js","../library/Elements":"library/Elements.js","../images/logo.png":"images/logo.png","../Router":"Router.js","../library/Authenticator":"library/Authenticator.js","../library/createCard":"library/createCard.js"}],"library/createPhotoFeed.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _firestore = require("firebase/firestore");
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function addItemToList(userID, firstName, lastName, fileName, URLPath) {
+  var ul = document.getElementById('list');
+
+  var _userID = document.createElement('li');
+
+  var _firstName = document.createElement('li');
+
+  var _lastName = document.createElement('li');
+
+  var _picture = document.createElement('img');
+
+  var _fileName = document.createElement('li');
+
+  var _URLPath = document.createElement('li');
+
+  var bt2n = document.createElement('div');
+  _picture.src = URLPath;
+  _picture.id = 'picture';
+  _userID.innerHTML = "UserID : ".concat(userID);
+  _firstName.innerHTML = " ".concat(firstName);
+  _lastName.innerHTML = "Lastname : ".concat(lastName);
+  bt2n.className = 'listItemsContainer__allContent'; // _picture.innerHTML = 'Picture : ' + fileName;
+
+  _fileName.innerHTML = "filename : ".concat(fileName);
+  _URLPath.innerHTML = "URL Path : ".concat(URLPath);
+  ul.appendChild(bt2n);
+  bt2n.appendChild(_firstName);
+  bt2n.appendChild(_picture);
+}
+
+var CreatePhoto = /*#__PURE__*/function () {
+  function CreatePhoto() {
+    _classCallCheck(this, CreatePhoto);
+  }
+
+  _createClass(CreatePhoto, [{
+    key: "fetchAll",
+    value: // eslint-disable-next-line class-methods-use-this
+    // eslint-disable-next-line class-methods-use-this
+    function () {
+      var _fetchAll = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        var firestore, querySnapshot;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                firestore = (0, _firestore.getFirestore)();
+                _context.next = 3;
+                return (0, _firestore.getDocs)((0, _firestore.collection)(firestore, 'users'));
+
+              case 3:
+                querySnapshot = _context.sent;
+                querySnapshot.forEach(function (doc) {
+                  var _doc$data = doc.data(),
+                      userID = _doc$data.userID;
+
+                  var _doc$data2 = doc.data(),
+                      firstName = _doc$data2.firstName;
+
+                  var _doc$data3 = doc.data(),
+                      lastName = _doc$data3.lastName;
+
+                  var fileName = doc.data().imageFilename;
+                  var URLPath = doc.data().profileURL;
+                  addItemToList(userID, firstName, lastName, fileName, URLPath);
+                });
+
+              case 5:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      function fetchAll() {
+        return _fetchAll.apply(this, arguments);
+      }
+
+      return fetchAll;
+    }()
+  }]);
+
+  return CreatePhoto;
+}();
+
+var _default = CreatePhoto;
+exports.default = _default;
+},{"firebase/firestore":"../node_modules/firebase/firestore/dist/index.esm.js"}],"components/memories.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -51540,6 +51570,8 @@ var _logo = _interopRequireDefault(require("../images/logo.png"));
 var _Router = _interopRequireDefault(require("../Router"));
 
 var _Authenticator = _interopRequireDefault(require("../library/Authenticator"));
+
+var _createPhotoFeed = _interopRequireDefault(require("../library/createPhotoFeed"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -51623,12 +51655,45 @@ var MemoriesComponent = /*#__PURE__*/function (_Component) {
       var homePageWrapperTwo = _Elements.default.createContainer({
         className: 'dashboardContainer',
         children: [headerContainerTwo, textContainerTwo]
+      });
+
+      var createAnEventBtn = _Elements.default.createButton({
+        className: 'eventsPageWrapperThree__createEventContainer--createEventBtn',
+        textContent: 'Upload your photo',
+        onClick: function onClick() {
+          _Router.default.getRouter().navigate('/uploadPhoto');
+        }
+      });
+
+      var showPhotos = _Elements.default.createButton({
+        className: 'eventsPageWrapperThree__createEventContainer--createEventBtn',
+        textContent: 'Show all photos',
+        onClick: function onClick() {
+          var komop = new _createPhotoFeed.default();
+          komop.fetchAll();
+        }
+      });
+
+      var createdEvents = _Elements.default.createList({
+        id: 'list',
+        className: 'listItemsContainer'
+      });
+
+      var createAnEvent = _Elements.default.createContainer({
+        className: 'eventsPageWrapperThree__createEventContainer',
+        children: [createAnEventBtn, showPhotos]
+      }); // wrapper three
+
+
+      var eventsPageWrapperThree = _Elements.default.createContainer({
+        className: 'eventsPageWrapperThree',
+        children: [createAnEvent]
       }); // combine two wrappers
 
 
       var createContainer = _Elements.default.createContainer({
         className: 'togheter',
-        children: [homePageWrapperOne, homePageWrapperTwo]
+        children: [homePageWrapperOne, homePageWrapperTwo, eventsPageWrapperThree, createdEvents]
       });
 
       MemoriesContainer.appendChild(createContainer);
@@ -51641,7 +51706,7 @@ var MemoriesComponent = /*#__PURE__*/function (_Component) {
 
 var _default = MemoriesComponent;
 exports.default = _default;
-},{"../library/Component":"library/Component.js","../library/Elements":"library/Elements.js","../images/logo.png":"images/logo.png","../Router":"Router.js","../library/Authenticator":"library/Authenticator.js"}],"images/searchPartyOne.jpg":[function(require,module,exports) {
+},{"../library/Component":"library/Component.js","../library/Elements":"library/Elements.js","../images/logo.png":"images/logo.png","../Router":"Router.js","../library/Authenticator":"library/Authenticator.js","../library/createPhotoFeed":"library/createPhotoFeed.js"}],"images/searchPartyOne.jpg":[function(require,module,exports) {
 module.exports = "/searchPartyOne.0ae9f66a.jpg";
 },{}],"components/searchParty.js":[function(require,module,exports) {
 "use strict";
@@ -52103,7 +52168,447 @@ var ProfileSettingsComponent = /*#__PURE__*/function (_Component) {
 
 var _default = ProfileSettingsComponent;
 exports.default = _default;
-},{"../library/Component":"library/Component.js","../library/Elements":"library/Elements.js","../images/logo.png":"images/logo.png","../Router":"Router.js","../library/Authenticator":"library/Authenticator.js"}],"index.js":[function(require,module,exports) {
+},{"../library/Component":"library/Component.js","../library/Elements":"library/Elements.js","../images/logo.png":"images/logo.png","../Router":"Router.js","../library/Authenticator":"library/Authenticator.js"}],"library/Crud.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _firestore = require("firebase/firestore");
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+var Crud = /*#__PURE__*/function () {
+  function Crud() {
+    _classCallCheck(this, Crud);
+  }
+
+  _createClass(Crud, [{
+    key: "addUser",
+    value: // eslint-disable-next-line class-methods-use-this
+    function addUser() {
+      var firestore = (0, _firestore.getFirestore)();
+      var partyName = document.getElementById('userID').value;
+      var from = document.getElementById('firstName').value;
+      var date = document.getElementById('lastName').value;
+      var ref = (0, _firestore.doc)(firestore, 'pelerr', partyName);
+      (0, _firestore.setDoc)(ref, {
+        PartyName: partyName,
+        From: from,
+        Date: date // profileURL: downloadURLVar,
+        // imageFilename: namebox.value + ',' + extLab.innerHTML
+
+      }).catch(function (error) {
+        // eslint-disable-next-line no-alert
+        alert("error".concat(error));
+      });
+    }
+  }]);
+
+  return Crud;
+}();
+
+var _default = Crud;
+exports.default = _default;
+},{"firebase/firestore":"../node_modules/firebase/firestore/dist/index.esm.js"}],"components/createEvents.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _Component2 = _interopRequireDefault(require("../library/Component"));
+
+var _Elements = _interopRequireDefault(require("../library/Elements"));
+
+var _logo = _interopRequireDefault(require("../images/logo.png"));
+
+var _Router = _interopRequireDefault(require("../Router"));
+
+var _Authenticator = _interopRequireDefault(require("../library/Authenticator"));
+
+var _Crud = _interopRequireDefault(require("../library/Crud"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var CreateEventComponent = /*#__PURE__*/function (_Component) {
+  _inherits(CreateEventComponent, _Component);
+
+  var _super = _createSuper(CreateEventComponent);
+
+  function CreateEventComponent() {
+    _classCallCheck(this, CreateEventComponent);
+
+    return _super.call(this, {
+      name: 'createEvent',
+      routerPath: '/createEvent'
+    });
+  }
+
+  _createClass(CreateEventComponent, [{
+    key: "render",
+    value: function render() {
+      this.clearComponent();
+      var CreateEventContainer = document.createElement('div'); // content wrapper One
+
+      var header = _Elements.default.createImage({
+        newSource: _logo.default,
+        className: 'dashboard__logo',
+        onClick: function onClick() {
+          _Router.default.getRouter().navigate('/dashboard');
+        }
+      });
+
+      var logOutBtn = _Elements.default.createButton({
+        className: 'dashboard__btnLogOut',
+        textContent: 'Log out',
+        onClick: function onClick() {
+          var auth = new _Authenticator.default();
+          auth.logOut();
+        }
+      }); // wrapper One
+
+
+      var homePageWrapperOne = _Elements.default.createContainer({
+        className: 'dashboard',
+        children: [header, logOutBtn]
+      }); // content wrapper Two
+
+
+      var headerContainerTwo = _Elements.default.createHeader({
+        textContent: 'Create Event',
+        className: 'dashboardContainer__sloganOne'
+      });
+
+      var textContainerTwo = _Elements.default.createText({
+        textContent: 'and have a party to remember',
+        className: 'dashboardContainer__text'
+      }); // inputifelds
+
+
+      var inputUserId = _Elements.default.createInput({
+        type: 'text',
+        id: 'userID',
+        placeholder: 'Event Name'
+      });
+
+      var firstnameInput = _Elements.default.createInput({
+        type: 'text',
+        id: 'firstName',
+        placeholder: 'Your name'
+      });
+
+      var lastNameInput = _Elements.default.createInput({
+        type: 'text',
+        id: 'lastName',
+        placeholder: 'Date'
+      });
+
+      var createEventBtn = _Elements.default.createButton({
+        textContent: 'Create Event',
+        id: 'createEvent',
+        onClick: function onClick() {
+          var auth = new _Crud.default();
+          auth.addUser(); // eslint-disable-next-line no-alert
+
+          alert('Your event is created! ');
+
+          _Router.default.getRouter().navigate('/events');
+        }
+      }); // wrapper Two
+
+
+      var homePageWrapperTwo = _Elements.default.createContainer({
+        className: 'dashboardContainer',
+        children: [headerContainerTwo, textContainerTwo, inputUserId, firstnameInput, lastNameInput, createEventBtn]
+      }); // combine two wrappers
+
+
+      var createContainer = _Elements.default.createContainer({
+        className: 'togheter',
+        children: [homePageWrapperOne, homePageWrapperTwo]
+      });
+
+      CreateEventContainer.appendChild(createContainer);
+      return CreateEventContainer;
+    }
+  }]);
+
+  return CreateEventComponent;
+}(_Component2.default);
+
+var _default = CreateEventComponent;
+exports.default = _default;
+},{"../library/Component":"library/Component.js","../library/Elements":"library/Elements.js","../images/logo.png":"images/logo.png","../Router":"Router.js","../library/Authenticator":"library/Authenticator.js","../library/Crud":"library/Crud.js"}],"components/uploadPhotos.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _Component2 = _interopRequireDefault(require("../library/Component"));
+
+var _Elements = _interopRequireDefault(require("../library/Elements"));
+
+var _logo = _interopRequireDefault(require("../images/logo.png"));
+
+var _Router = _interopRequireDefault(require("../Router"));
+
+var _Authenticator = _interopRequireDefault(require("../library/Authenticator"));
+
+var _Crud = _interopRequireDefault(require("../library/Crud"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var UploadPhotosComponent = /*#__PURE__*/function (_Component) {
+  _inherits(UploadPhotosComponent, _Component);
+
+  var _super = _createSuper(UploadPhotosComponent);
+
+  function UploadPhotosComponent() {
+    _classCallCheck(this, UploadPhotosComponent);
+
+    return _super.call(this, {
+      name: 'uploadPhoto',
+      routerPath: '/uploadPhoto'
+    });
+  }
+
+  _createClass(UploadPhotosComponent, [{
+    key: "render",
+    value: function render() {
+      this.clearComponent();
+      var uploadPhotosContainer = document.createElement('div'); // content wrapper One
+
+      var header = _Elements.default.createImage({
+        newSource: _logo.default,
+        className: 'dashboard__logo',
+        onClick: function onClick() {
+          _Router.default.getRouter().navigate('/dashboard');
+        }
+      });
+
+      var logOutBtn = _Elements.default.createButton({
+        className: 'dashboard__btnLogOut',
+        textContent: 'Log out',
+        onClick: function onClick() {
+          var auth = new _Authenticator.default();
+          auth.logOut();
+        }
+      }); // wrapper One
+
+
+      var homePageWrapperOne = _Elements.default.createContainer({
+        className: 'dashboard',
+        children: [header, logOutBtn]
+      }); // content wrapper Two
+
+
+      var headerContainerTwo = _Elements.default.createHeader({
+        textContent: 'Create Event',
+        className: 'dashboardContainer__sloganOne'
+      });
+
+      var textContainerTwo = _Elements.default.createText({
+        textContent: 'and have a party to remember',
+        className: 'dashboardContainer__text'
+      }); // inputifelds
+
+
+      var inputUserId = _Elements.default.createInput({
+        type: 'text',
+        id: 'userID',
+        placeholder: 'Event Name'
+      });
+
+      var firstnameInput = _Elements.default.createInput({
+        type: 'text',
+        id: 'firstName',
+        placeholder: 'Your name'
+      });
+
+      var lastNameInput = _Elements.default.createInput({
+        type: 'text',
+        id: 'lastName',
+        placeholder: 'Date'
+      });
+
+      var createEventBtn = _Elements.default.createButton({
+        textContent: 'Create Event',
+        id: 'createEvent',
+        onClick: function onClick() {
+          var auth = new _Crud.default();
+          auth.addUser(); // eslint-disable-next-line no-alert
+
+          alert('Your event is created! ');
+
+          _Router.default.getRouter().navigate('/events');
+        }
+      }); // wrapper Two
+
+
+      var homePageWrapperTwo = _Elements.default.createContainer({
+        className: 'dashboardContainer',
+        children: [headerContainerTwo, textContainerTwo, inputUserId, firstnameInput, lastNameInput, createEventBtn]
+      }); // combine two wrappers
+
+
+      var createContainer = _Elements.default.createContainer({
+        className: 'togheter',
+        children: [homePageWrapperOne, homePageWrapperTwo]
+      });
+
+      uploadPhotosContainer.appendChild(createContainer);
+      return uploadPhotosContainer;
+    }
+  }]);
+
+  return UploadPhotosComponent;
+}(_Component2.default);
+
+var _default = UploadPhotosComponent;
+exports.default = _default;
+},{"../library/Component":"library/Component.js","../library/Elements":"library/Elements.js","../images/logo.png":"images/logo.png","../Router":"Router.js","../library/Authenticator":"library/Authenticator.js","../library/Crud":"library/Crud.js"}],"components/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "CreateEventComponent", {
+  enumerable: true,
+  get: function () {
+    return _createEvents.default;
+  }
+});
+Object.defineProperty(exports, "DashboardComponent", {
+  enumerable: true,
+  get: function () {
+    return _dashboard.default;
+  }
+});
+Object.defineProperty(exports, "EventsComponent", {
+  enumerable: true,
+  get: function () {
+    return _events.default;
+  }
+});
+Object.defineProperty(exports, "HomePageComponent", {
+  enumerable: true,
+  get: function () {
+    return _HomePage.default;
+  }
+});
+Object.defineProperty(exports, "MemoriesComponent", {
+  enumerable: true,
+  get: function () {
+    return _memories.default;
+  }
+});
+Object.defineProperty(exports, "ProfileSettingsComponent", {
+  enumerable: true,
+  get: function () {
+    return _profileSettings.default;
+  }
+});
+Object.defineProperty(exports, "ReigsterPageComponent", {
+  enumerable: true,
+  get: function () {
+    return _registerPage.default;
+  }
+});
+Object.defineProperty(exports, "SearchPartyComponent", {
+  enumerable: true,
+  get: function () {
+    return _searchParty.default;
+  }
+});
+Object.defineProperty(exports, "TakeCareComponent", {
+  enumerable: true,
+  get: function () {
+    return _takeCare.default;
+  }
+});
+Object.defineProperty(exports, "UploadPhotosComponent", {
+  enumerable: true,
+  get: function () {
+    return _uploadPhotos.default;
+  }
+});
+
+var _HomePage = _interopRequireDefault(require("./HomePage"));
+
+var _registerPage = _interopRequireDefault(require("./registerPage"));
+
+var _dashboard = _interopRequireDefault(require("./dashboard"));
+
+var _memories = _interopRequireDefault(require("./memories"));
+
+var _events = _interopRequireDefault(require("./events"));
+
+var _searchParty = _interopRequireDefault(require("./searchParty"));
+
+var _takeCare = _interopRequireDefault(require("./takeCare"));
+
+var _profileSettings = _interopRequireDefault(require("./profileSettings"));
+
+var _createEvents = _interopRequireDefault(require("./createEvents"));
+
+var _uploadPhotos = _interopRequireDefault(require("./uploadPhotos"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./HomePage":"components/HomePage.js","./registerPage":"components/registerPage.js","./dashboard":"components/dashboard.js","./memories":"components/memories.js","./events":"components/events.js","./searchParty":"components/searchParty.js","./takeCare":"components/takeCare.js","./profileSettings":"components/profileSettings.js","./createEvents":"components/createEvents.js","./uploadPhotos":"components/uploadPhotos.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _App = _interopRequireDefault(require("./App"));
@@ -52123,6 +52628,10 @@ var _searchParty = _interopRequireDefault(require("./components/searchParty"));
 var _takeCare = _interopRequireDefault(require("./components/takeCare"));
 
 var _profileSettings = _interopRequireDefault(require("./components/profileSettings"));
+
+var _createEvents = _interopRequireDefault(require("./components/createEvents"));
+
+var _components = require("./components");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52152,10 +52661,12 @@ var initApp = function initApp() {
   app.addComponent(new _searchParty.default());
   app.addComponent(new _takeCare.default());
   app.addComponent(new _profileSettings.default());
+  app.addComponent(new _createEvents.default());
+  app.addComponent(new _components.UploadPhotosComponent());
 };
 
 window.addEventListener('load', initApp);
-},{"./App":"App.js","./components/HomePage":"components/HomePage.js","./components/dashboard":"components/dashboard.js","./components/registerPage":"components/registerPage.js","./components/events":"components/events.js","./components/memories":"components/memories.js","./components/searchParty":"components/searchParty.js","./components/takeCare":"components/takeCare.js","./components/profileSettings":"components/profileSettings.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./App":"App.js","./components/HomePage":"components/HomePage.js","./components/dashboard":"components/dashboard.js","./components/registerPage":"components/registerPage.js","./components/events":"components/events.js","./components/memories":"components/memories.js","./components/searchParty":"components/searchParty.js","./components/takeCare":"components/takeCare.js","./components/profileSettings":"components/profileSettings.js","./components/createEvents":"components/createEvents.js","./components":"components/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

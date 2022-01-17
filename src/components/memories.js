@@ -9,6 +9,7 @@ import Elements from '../library/Elements';
 import logo from '../images/logo.png';
 import Router from '../Router';
 import Authenticator from '../library/Authenticator';
+import CreatePhoto from '../library/createPhotoFeed';
 
 class MemoriesComponent extends Component {
   constructor() {
@@ -66,10 +67,45 @@ class MemoriesComponent extends Component {
 
     });
 
+    const createAnEventBtn = Elements.createButton({
+      className: 'eventsPageWrapperThree__createEventContainer--createEventBtn',
+      textContent: 'Upload your photo',
+      onClick: () => {
+        Router.getRouter().navigate('/uploadPhoto');
+      },
+
+    });
+    const showPhotos = Elements.createButton({
+      className: 'eventsPageWrapperThree__createEventContainer--createEventBtn',
+      textContent: 'Show all photos',
+      onClick: () => {
+        const komop = new CreatePhoto();
+        komop.fetchAll();
+      },
+
+    });
+    const createdEvents = Elements.createList({
+      id: 'list',
+      className: 'listItemsContainer',
+    });
+
+    const createAnEvent = Elements.createContainer({
+      className: 'eventsPageWrapperThree__createEventContainer',
+      children: [createAnEventBtn, showPhotos],
+    });
+
+    // wrapper three
+    const eventsPageWrapperThree = Elements.createContainer({
+      className: 'eventsPageWrapperThree',
+      children: [createAnEvent],
+    });
+
     // combine two wrappers
     const createContainer = Elements.createContainer({
       className: 'togheter',
-      children: [homePageWrapperOne, homePageWrapperTwo],
+      children: [homePageWrapperOne, homePageWrapperTwo,
+        eventsPageWrapperThree, createdEvents,
+      ],
     });
 
     MemoriesContainer.appendChild(createContainer);

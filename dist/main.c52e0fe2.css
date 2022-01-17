@@ -290,21 +290,12 @@
   margin-top: 0.7rem;
 }
 .AllContainers__divSix .panicButton {
-  color: blue;
   font-family: "Righteous", cursive;
   color: #FFFFFF;
   background-color: #FF0000;
   border: none;
   font-size: 1rem;
   margin-top: 0.5rem;
-}
-
-.dashboardContaine__list {
-  color: red;
-}
-
-.dashboardContaine__list img {
-  width: 10%;
 }
 
 .dashboard {
@@ -324,9 +315,6 @@
   border-radius: 0.4rem;
   background-color: #495EAA;
   color: #FFFFFF;
-}
-.dashboard__list {
-  background-color: red;
 }
 
 .dashboardContainer__sloganOne {
@@ -422,6 +410,227 @@
   background-color: #FFFFFF;
   color: #495EAA;
   margin-bottom: 20px;
+}
+
+#picture {
+  width: 80%;
+  height: 100%;
+}
+
+.listItemsContainer {
+  color: black;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.listItemsContainer__content {
+  background-color: #D8DBE8;
+  color: #495EAA;
+  width: 80%;
+  margin: 20px;
+  border-radius: 0.4rem;
+  padding: 1.5rem 0rem 1rem 1.5rem;
+  font-family: "Righteous", cursive;
+  font-size: 1rem;
+  box-shadow: 5px 5px 15px -5px #495EAA;
+}
+.listItemsContainer__content--partyName {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.listItemsContainer__content--partyFrom {
+  font-family: "Quicksand", sans-serif;
+  margin-bottom: 10px;
+}
+.listItemsContainer__content--date {
+  font-family: "Quicksand", sans-serif;
+  margin-bottom: 20px;
+}
+.listItemsContainer__content--btnDetail {
+  font-family: "Righteous", cursive;
+  font-size: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  background-color: #495EAA;
+  color: #FFFFFF;
+  border: none;
+}
+
+.listItemsContainer img {
+  width: 10%;
+}
+
+.dashboard {
+  height: 20vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dashboard__logo {
+  width: 7rem;
+}
+.dashboard__btnLogOut {
+  margin-right: 3rem;
+  font-family: "Righteous", cursive;
+  font-size: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  background-color: #495EAA;
+  color: #FFFFFF;
+}
+
+.dashboardContainer__sloganOne {
+  font-family: "Righteous", cursive;
+  color: #495EAA;
+  margin-left: 1.5rem;
+  font-size: 3rem;
+  width: 100vw;
+}
+.dashboardContainer__text {
+  font-family: "Righteous", cursive;
+  color: #495EAA;
+  font-size: 0.8rem;
+  margin-left: 1.5rem;
+}
+
+.eventsPageWrapperThree {
+  display: flex;
+  justify-content: center;
+}
+.eventsPageWrapperThree__createEventContainer {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+.eventsPageWrapperThree__createEventContainer--ShowEventsBtn {
+  justify-content: center;
+  font-family: "Righteous", cursive;
+  font-size: 1rem;
+  padding: 1.5rem;
+  border-radius: 0.4rem;
+  border: none;
+  background-color: #495EAA;
+  color: #FFFFFF;
+}
+.eventsPageWrapperThree__createEventContainer--createEventBtn {
+  justify-content: center;
+  font-family: "Righteous", cursive;
+  font-size: 1rem;
+  padding: 1.5rem;
+  border-radius: 0.4rem;
+  border: none;
+  background-color: #495EAA;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+#picture {
+  width: 100%;
+}
+
+.listItemsContainer {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.listItemsContainer__allContent {
+  background-color: #D8DBE8;
+  color: #495EAA;
+  width: 80%;
+  border-radius: 0.4rem;
+  font-family: "Righteous", cursive;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+.listItemsContainer__allContent--partyName {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.listItemsContainer__allContent--partyFrom {
+  font-family: "Quicksand", sans-serif;
+  margin-bottom: 10px;
+}
+.listItemsContainer__allContent--date {
+  font-family: "Quicksand", sans-serif;
+  margin-bottom: 20px;
+}
+.listItemsContainer__allContent--btnDetail {
+  font-family: "Righteous", cursive;
+  font-size: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  background-color: #495EAA;
+  color: #FFFFFF;
+  border: none;
+}
+
+.dashboard {
+  height: 20vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dashboard__logo {
+  width: 7rem;
+}
+.dashboard__btnLogOut {
+  margin-right: 3rem;
+  font-family: "Righteous", cursive;
+  font-size: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  background-color: #495EAA;
+  color: #FFFFFF;
+}
+
+.dashboardContainer__sloganOne {
+  font-family: "Righteous", cursive;
+  color: #495EAA;
+  margin-left: 1.5rem;
+  font-size: 3rem;
+  width: 100vw;
+}
+.dashboardContainer__text {
+  font-family: "Righteous", cursive;
+  color: #495EAA;
+  font-size: 0.8rem;
+  margin-left: 1.5rem;
+}
+
+.eventsPageWrapperThree {
+  display: flex;
+  justify-content: center;
+}
+.eventsPageWrapperThree__createEventContainer {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+.eventsPageWrapperThree__createEventContainer--ShowEventsBtn {
+  justify-content: center;
+  font-family: "Righteous", cursive;
+  font-size: 1rem;
+  padding: 1.5rem;
+  border-radius: 0.4rem;
+  border: none;
+  background-color: #495EAA;
+  color: #FFFFFF;
+}
+.eventsPageWrapperThree__createEventContainer--createEventBtn {
+  justify-content: center;
+  font-family: "Righteous", cursive;
+  font-size: 1rem;
+  padding: 1.5rem;
+  border-radius: 0.4rem;
+  border: none;
+  background-color: #495EAA;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 * {

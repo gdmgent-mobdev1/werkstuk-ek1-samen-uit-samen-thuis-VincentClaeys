@@ -4,13 +4,7 @@
 
 @use 'sass:map';
 
-.dashboardContaine__list {
-    color: red;
-}
 
-.dashboardContaine__list img {
-    width: 10%;
-}
 
 .dashboard {
 
@@ -34,10 +28,6 @@
         color: map.get($map: vars.$colors, $key: color3);
 
 
-    }
-
-    &__list {
-        background-color: red;
     }
 }
 
