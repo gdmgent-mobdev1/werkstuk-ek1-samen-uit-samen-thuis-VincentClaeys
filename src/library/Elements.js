@@ -59,10 +59,13 @@ const Elements = {
     return text;
   },
 
-  createImage({ newSource, className, onClick = null }) {
+  createImage({
+    newSource, className, onClick = null, id,
+  }) {
     const picture = document.createElement('img');
     picture.src = newSource;
     picture.classList.add(className);
+    picture.id = id;
 
     if (onClick) picture.addEventListener('click', () => { onClick(); });
     return picture;

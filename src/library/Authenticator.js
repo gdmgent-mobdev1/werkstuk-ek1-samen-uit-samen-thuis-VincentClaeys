@@ -2,10 +2,11 @@
 import {
   createUserWithEmailAndPassword,
   getAuth, signInWithEmailAndPassword, signOut,
-  signInWithPopup, GoogleAuthProvider,
+  signInWithPopup, GoogleAuthProvider, onAuthStateChanged,
 
 }
   from 'firebase/auth';
+import { getFirestore, doc, setDoc } from 'firebase/firestore';
 import Router from '../Router';
 
 class Authenticator {
@@ -14,9 +15,20 @@ class Authenticator {
    */
   register() {
     const auth = getAuth();
+    const firestore = getFirestore();
 
     const email = document.getElementById('emailRegister').value;
     const pwd = document.getElementById('pwdRegister').value;
+    const username = document.getElementById('usernameRegister').value;
+    const ref = doc(firestore, 'AllUsers', email);
+    setDoc(ref, {
+      Email: email,
+      passWord: pwd,
+      Username: username,
+
+      // profileURL: downloadURLVar,
+      // imageFilename: namebox.value + ',' + extLab.innerHTML
+    });
 
     createUserWithEmailAndPassword(auth, email, pwd)
       .then((userCredential) => {
@@ -64,7 +76,20 @@ class Authenticator {
       });
   }
 
-  /**
+  ineenfunctie() {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+        const { email } = user;
+        console.log(email);
+      // ...
+      }
+      // User is signed out
+      // ...
+    });
+  } /**
    * Login with Google
    */
 

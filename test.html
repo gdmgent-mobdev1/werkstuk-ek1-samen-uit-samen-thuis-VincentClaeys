@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+ 
+
+</head>
+
+<body>
+
+  <div id="Imageupload">
+
+    userid <input id="userID",type="text"></input> <br></br>
+
+    firstname <input id="firstName",type="text"></input> <br></br>
+
+    lastname <input id="lastName",type="file"></input> <br></br>
+    <input type="file" name="" id="test">
+
+   
+
+    <img id="myImage"> <label id="upProgress"></label><br></br>
+
+ 
+
+    <button id="upBtn">Upload Image</button>
+
+  </div>
+
+ 
+
+  <script type="module">
+
+ 
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+
+    import { getFirestore, doc, getDoc, setDoc, collection, addDoc, updateDoc, deleteDoc, deleteField } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+    import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
+
+   
+
+
+
+ 
+
+    const firebaseConfig = {
+  apiKey: 'AIzaSyA7ept9dMYY1m3IEt7wpjaUPn72sTJGG3Q',
+  authDomain: 'spa-samenuit-samenthuis.firebaseapp.com',
+  projectId: 'spa-samenuit-samenthuis',
+  storageBucket: 'spa-samenuit-samenthuis.appspot.com',
+  messagingSenderId: '731709963843',
+  appId: '1:731709963843:web:3fe1da7497f09dd604def6',
+};
+
+
+ 
+    // Initialize Firebase
+
+    const app = initializeApp(firebaseConfig);
+var userIDVar, firstNameVar, lastNameVar, downloadURLVar, fileNameVar;
+
+
+    const firestore = getFirestore();
+
+   
+
+    var files = []
+
+    var reader = new FileReader();
+
+    var myimg = document.getElementById("MyImg");
+    const selBtn = document.getElementById("test");
+    var upBtn = document.getElementById("upBtn");
+
+
+    selBtn.onchange = e => {  
+
+      files = e.target.files;
+console.log(files);
+ 
+
+      //var extention = getFileExt(files[0]);
+
+      //var name = getFileName(files[0]);
+      fileNameVar = getFileName(files[0]);
+      console.log(fileNameVar);
+      //namebox.value = name;
+
+      //extLab.value = extention;
+
+      reader.readAsDataURL(files[0]);
+      console.log(reader);
+
+    }
+
+
+    reader.onload = function (){
+
+      myImage.src = reader.result;
+
+    }
+
+ 
+
+
+ 
+
+    function getFileName(file) {
+
+      var temp = file.name.split('.');
+
+      return temp;
+
+    }
+
+ 
+
+    async function uploadProcess() {
+
+      var imageToUpload =files[0];
+
+ 
+
+      const metaData = {
+
+        contentType: imageToUpload.type
+
+      }
+
+ 
+
+      const storage = getStorage();
+      const storageRef = sRef(storage,"images/"+fileNameVar);
+      const uploadTask = uploadBytesResumable(storageRef, imageToUpload, metaData);
+
+ 
+
+      uploadTask.on('state-change', (snapshot) => {
+
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
+
+
+      },
+
+      );
+
+    }
+ 
+
+    upBtn.onclick = uploadProcess;
+
+    function populateVariables()
+
+    {   userIDVar = document.getElementById('userID').value;
+        firstNameVar = document.getElementById('firstName').value;
+        lastNameVar = document.getElementById('lastName').value;
+
+    }
+
+    async function addUser()
+
+      { 
+
+        
+ 
+
+        var ref = doc (firestore,"loevers",userIDVar);
+
+ 
+
+        await setDoc(
+
+           ref, {
+
+            userID: userIDVar,
+            firstName: firstNameVar,
+            lastName: lastNameVar,
+            profileURL: downloadURLVar
+
+          }
+
+        )
+
+        .then(()=>{  
+          alert("record added");
+         })
+         .catch ((error) => {  
+            alert ("error" + error)
+
+          });
+
+      }      
+
+</script>
+
+</body>
+
+</html>

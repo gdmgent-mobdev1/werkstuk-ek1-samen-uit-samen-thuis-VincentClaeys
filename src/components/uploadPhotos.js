@@ -1,15 +1,24 @@
+/* eslint-disable no-console */
+/* eslint-disable no-alert */
 /**
  *dashboard Component
  */
 
 /* eslint-disable class-methods-use-this */
 
+import {
+  doc,
+  setDoc,
+  getFirestore,
+} from 'firebase/firestore';
+import {
+  getStorage, ref as sRef, uploadBytesResumable, getDownloadURL,
+} from 'firebase/storage';
 import Component from '../library/Component';
 import Elements from '../library/Elements';
 import logo from '../images/logo.png';
 import Router from '../Router';
 import Authenticator from '../library/Authenticator';
-import Crud from '../library/Crud';
 
 class UploadPhotosComponent extends Component {
   constructor() {
@@ -58,47 +67,108 @@ class UploadPhotosComponent extends Component {
       className: 'dashboardContainer__text',
 
     });
-    // inputifelds
-    const inputUserId = Elements.createInput({
-      type: 'text',
-      id: 'userID',
-      placeholder: 'Event Name',
+
+    /**
+       * UPLOAD IMAGE
+       */
+    let downloadURLVar; let
+      fileNameVar;
+    let files = [];
+    const reader = new FileReader();
+    const firestore = getFirestore();
+    const createtext = Elements.createInput({
+      id: 'username',
+      input: 'type',
     });
-    const firstnameInput = Elements.createInput({
-      type: 'text',
-      id: 'firstName',
-      placeholder: 'Your name',
+    const createInputFile = Elements.createInput({
+      id: 'imgName',
+      type: 'file',
     });
-    const lastNameInput = Elements.createInput({
-      type: 'text',
-      id: 'lastName',
-      placeholder: 'Date',
+    const createUploadBtn = Elements.createButton({
+      id: 'upBtn',
+      textContent: 'upload',
     });
 
-    const createEventBtn = Elements.createButton({
-      textContent: 'Create Event',
-      id: 'createEvent',
-      onClick: () => {
-        const auth = new Crud();
-        auth.addUser();
-        // eslint-disable-next-line no-alert
-        alert('Your event is created! ');
-        Router.getRouter().navigate('/events');
-      },
-    });
+    function getFileName(file) {
+      const temp = file.name.split('.');
+      return temp;
+    }
+    createInputFile.onchange = (e) => {
+      files = e.target.files;
+      console.log(files);
+      fileNameVar = getFileName(files[0]);
+      console.log(fileNameVar);
+      reader.readAsDataURL(files[0]);
+      console.log(reader);
+    };
+    function addUser() {
+      const firstNameVar = document.getElementById('username').value;
+      const ref = doc(firestore, 'users', firstNameVar);
 
-    // wrapper Two
+      setDoc(ref, {
+        firstName: firstNameVar,
+        profileURL: downloadURLVar,
+
+      })
+
+        .then(() => {
+          alert('record added');
+        })
+        .catch((error) => {
+          alert(`error${error}`);
+        });
+    }
+
+    async function uploadProcess() {
+      const imageToUpload = files[0];
+
+      const metaData = {
+
+        contentType: imageToUpload.type,
+
+      };
+
+      const storage = getStorage();
+      const storageRef = sRef(storage, `images/${fileNameVar}`);
+      const uploadTask = uploadBytesResumable(storageRef, imageToUpload, metaData);
+
+      uploadTask.on(
+        'state-change',
+        (snapshot) => {
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log(progress);
+        // progLab.innerHTML = "Upload " + progress + "%";
+        },
+        (error) => {
+          alert(`error: image not uploaded${error}`);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            downloadURLVar = downloadURL;
+            addUser();
+          });
+        },
+
+      );
+    }
+
+    createUploadBtn.onclick = uploadProcess;
+
+    /**
+ * WRAPPER TWO
+ */
     const homePageWrapperTwo = Elements.createContainer({
       className: 'dashboardContainer',
       children: [headerContainerTwo,
-        textContainerTwo, inputUserId, firstnameInput, lastNameInput, createEventBtn],
+        textContainerTwo],
 
     });
 
     // combine two wrappers
     const createContainer = Elements.createContainer({
       className: 'togheter',
-      children: [homePageWrapperOne, homePageWrapperTwo],
+      children: [homePageWrapperOne, homePageWrapperTwo, createtext, createInputFile,
+        createUploadBtn],
     });
 
     uploadPhotosContainer.appendChild(createContainer);

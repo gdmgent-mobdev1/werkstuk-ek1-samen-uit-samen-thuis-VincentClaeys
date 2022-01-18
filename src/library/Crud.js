@@ -8,7 +8,7 @@ class Crud {
     const from = document.getElementById('firstName').value;
     const date = document.getElementById('lastName').value;
 
-    const ref = doc(firestore, 'pelerr', partyName);
+    const ref = doc(firestore, 'Events', partyName);
 
     setDoc(ref, {
       PartyName: partyName,
