@@ -59,11 +59,11 @@ class UploadPhotosComponent extends Component {
 
     // content wrapper Two
     const headerContainerTwo = Elements.createHeader({
-      textContent: 'Create Event',
+      textContent: 'Upload Photo',
       className: 'dashboardContainer__sloganOne',
     });
     const textContainerTwo = Elements.createText({
-      textContent: 'and have a party to remember',
+      textContent: 'and share beautiful moments!',
       className: 'dashboardContainer__text',
 
     });
@@ -77,16 +77,24 @@ class UploadPhotosComponent extends Component {
     const reader = new FileReader();
     const firestore = getFirestore();
     const createtext = Elements.createInput({
+      className: ' uploadContainer__inputFieldUpload',
+      placeholder: 'your Username',
       id: 'username',
       input: 'type',
     });
     const createInputFile = Elements.createInput({
+      className: 'uploadContainer__uploadBtn',
       id: 'imgName',
       type: 'file',
     });
     const createUploadBtn = Elements.createButton({
+      className: 'uploadContainer__uploadBtn',
       id: 'upBtn',
       textContent: 'upload',
+    });
+    const uploadPhotoContainer = Elements.createContainer({
+      className: 'uploadContainer',
+      children: [createtext, createInputFile, createUploadBtn],
     });
 
     function getFileName(file) {
@@ -146,6 +154,7 @@ class UploadPhotosComponent extends Component {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             downloadURLVar = downloadURL;
             addUser();
+            Router.getRouter().navigate('/memories');
           });
         },
 
@@ -167,8 +176,7 @@ class UploadPhotosComponent extends Component {
     // combine two wrappers
     const createContainer = Elements.createContainer({
       className: 'togheter',
-      children: [homePageWrapperOne, homePageWrapperTwo, createtext, createInputFile,
-        createUploadBtn],
+      children: [homePageWrapperOne, homePageWrapperTwo, uploadPhotoContainer],
     });
 
     uploadPhotosContainer.appendChild(createContainer);

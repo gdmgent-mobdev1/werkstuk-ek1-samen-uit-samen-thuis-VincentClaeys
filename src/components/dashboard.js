@@ -3,7 +3,7 @@
  */
 
 /* eslint-disable class-methods-use-this */
-
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import Component from '../library/Component';
 import Elements from '../library/Elements';
 import logo from '../images/logo.png';
@@ -44,20 +44,40 @@ class DashboardComponent extends Component {
     });
 
     // content wrapper Two
-    const headerContainerTwo = Elements.createHeader({
-      textContent: 'Hello,',
-      className: 'dashboardContainer__sloganOne',
-    });
+
     const textContainerTwo = Elements.createText({
       textContent: 'Nice to have you back! ',
       className: 'dashboardContainer__text',
 
     });
 
+    const showTheUsername = Elements.createText({
+      id: 'heelkleinetekst',
+      className: 'dashboardContainer__sloganOne',
+
+    });
+
+    const auth = getAuth();
+
+    function showUsername() {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          const { displayName } = user;
+          showTheUsername.textContent = `Hello ${displayName},`;
+
+          // ...
+        } else {
+          // User is signed out
+          // ...
+        }
+      });
+    }
+    window.onload = showUsername();
+
     // wrapper Two
     const homePageWrapperTwo = Elements.createContainer({
       className: 'dashboardContainer',
-      children: [headerContainerTwo,
+      children: [showTheUsername,
         textContainerTwo],
 
     });

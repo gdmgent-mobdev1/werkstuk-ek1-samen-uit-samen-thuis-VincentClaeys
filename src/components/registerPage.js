@@ -64,17 +64,11 @@ class ReigsterPageComponent extends Component {
       placeholder: 'password',
       id: 'pwdRegister',
     });
-    const inputFieldThree = Elements.createInputField({
-      className: 'welcomeBackContainer__wrapperFields--inputfieldThree',
-      type: 'text',
-      // text: 'password',
-      placeholder: 'username',
-      id: 'usernameRegister',
-    });
+
     // Login button
     const loginButton = Elements.createButton({
       className: 'welcomeBackContainer__btnLogin',
-      textContent: 'Register',
+      textContent: 'Next step',
       onClick: () => {
         const auth = new Authenticator();
         auth.register();
@@ -94,7 +88,7 @@ class ReigsterPageComponent extends Component {
     // wrapper inputfields
     const wrapperInputFields = Elements.createContainer({
       className: 'welcomeBackContainer__wrapperFields',
-      children: [inputFieldOne, inputFieldTwo, inputFieldThree],
+      children: [inputFieldOne, inputFieldTwo],
     });
 
     // wrapper Two

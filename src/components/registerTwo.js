@@ -11,18 +11,18 @@ import logo from '../images/logo.png';
 import Authenticator from '../library/Authenticator';
 import Router from '../Router';
 
-class ReigsterPageComponent extends Component {
+class ReigsterPageTwoComponent extends Component {
   constructor() {
     super({
-      name: 'register',
-      routerPath: '/register',
+      name: 'registerTwo',
+      routerPath: '/registerTwo',
     });
   }
 
   render() {
     this.clearComponent();
     // content wrapper One
-    const registerPageContainer = document.createElement('div');
+    const registerPageTwoContainer = document.createElement('div');
     const header = Elements.createImage({
       newSource: logo,
       className: 'header__logo',
@@ -45,57 +45,56 @@ class ReigsterPageComponent extends Component {
       className: 'welcomeBackContainer__sloganOne',
       id: 'test',
     });
-    const textContainerTwo = Elements.createText({
-      textContent: 'Already have an account? ',
-      className: 'welcomeBackContainer__text',
-    });
-    // inputfield one
-    const inputFieldOne = Elements.createInputField({
-      className: 'welcomeBackContainer__wrapperFields--inputfieldOne',
-      id: 'emailRegister',
-      placeholder: 'E-mail',
-    });
-    // inputfield Two
 
-    const inputFieldTwo = Elements.createInputField({
+    // inputfield one
+
+    const inputFieldThree = Elements.createInputField({
       className: 'welcomeBackContainer__wrapperFields--inputfieldTwo',
-      type: 'password',
+      type: 'text',
       // text: 'password',
-      placeholder: 'password',
-      id: 'pwdRegister',
+      placeholder: 'First Name',
+      id: 'firstNameRegister',
+    });
+    const inputFieldFour = Elements.createInputField({
+      className: 'welcomeBackContainer__wrapperFields--inputfieldTwo',
+      type: 'text',
+      // text: 'password',
+      placeholder: 'Last Name',
+      id: 'lastNameRegister',
+    });
+    const inputFieldFive = Elements.createInputField({
+      className: 'welcomeBackContainer__wrapperFields--inputfieldTwo',
+      type: 'text',
+      // text: 'password',
+      placeholder: 'username',
+      id: 'usernameRegister',
     });
 
     // Login button
     const loginButton = Elements.createButton({
       className: 'welcomeBackContainer__btnLogin',
-      textContent: 'Register',
+      textContent: 'Register!',
       onClick: () => {
-        const auth = new Authenticator();
-        auth.register();
+        const test = new Authenticator();
+        test.updateUsername();
+        Router.getRouter().navigate('/');
       },
 
     });
 
     // btn Register
-    const registerButton = Elements.createButton({
-      className: 'welcomeBackContainer__btnRegister',
-      textContent: 'Login here',
-      onClick: () => {
-        Router.getRouter().navigate('/');
-      },
-    });
 
     // wrapper inputfields
     const wrapperInputFields = Elements.createContainer({
       className: 'welcomeBackContainer__wrapperFields',
-      children: [inputFieldOne, inputFieldTwo],
+      children: [inputFieldFour, inputFieldThree, inputFieldFive],
     });
 
     // wrapper Two
     const homePageWrapperTwo = Elements.createContainer({
       className: 'welcomeBackContainer',
       children: [headerContainerTwo, wrapperInputFields, loginButton,
-        textContainerTwo, registerButton],
+      ],
 
     });
 
@@ -105,8 +104,8 @@ class ReigsterPageComponent extends Component {
       children: [homePageWrapperOne, homePageWrapperTwo],
     });
 
-    registerPageContainer.appendChild(createContainer);
-    return registerPageContainer;
+    registerPageTwoContainer.appendChild(createContainer);
+    return registerPageTwoContainer;
   }
 }
-export default ReigsterPageComponent;
+export default ReigsterPageTwoComponent;

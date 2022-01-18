@@ -76,15 +76,11 @@ class HomePageComponent extends Component {
       },
     });
     // facebook button
-    const loginButtonFacebook = Elements.createButton({
-      className: 'welcomeBackContainer__btnFacebook',
-      textContent: 'f',
-    });
 
     // google button
     const loginButtonGoogle = Elements.createButton({
       className: 'welcomeBackContainer__btnGoogle',
-      textContent: 'G',
+      textContent: 'Login With Google',
       onClick: () => {
         const auth = new Authenticator();
         auth.loginWithGoogle();
@@ -110,7 +106,7 @@ class HomePageComponent extends Component {
     const homePageWrapperTwo = Elements.createContainer({
       className: 'welcomeBackContainer',
       children: [headerContainerTwo, wrapperInputFields, loginButton,
-        loginButtonFacebook, loginButtonGoogle, textContainerTwo, registerButton],
+        loginButtonGoogle, textContainerTwo, registerButton],
 
     });
 

@@ -166,7 +166,7 @@
 
         &--text {
             font-family: vars.$text-font;
-            color: map.get($map: vars.$colors, $key: color4);
+            color: map.get($map: vars.$colors, $key: color3);
             background-color: map.get($map: vars.$colors, $key: color2);
             border: none;
             font-size: 0.7rem;

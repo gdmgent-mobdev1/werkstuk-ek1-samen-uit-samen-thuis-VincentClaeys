@@ -15,7 +15,8 @@ function addItemToList(userID, firstName, lastName, fileName, URLPath) {
   _picture.src = URLPath;
   _picture.id = 'picture';
   _userID.innerHTML = `UserID : ${userID}`;
-  _firstName.innerHTML = ` ${firstName}`;
+  _firstName.innerHTML = `This photo is uploaded by ${firstName}`;
+  _firstName.className = 'listItemsContainer__allContent--uploadedUsername';
   _lastName.innerHTML = `Lastname : ${lastName}`;
   bt2n.className = 'listItemsContainer__allContent';
 

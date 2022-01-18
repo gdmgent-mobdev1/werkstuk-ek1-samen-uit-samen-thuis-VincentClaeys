@@ -4807,10 +4807,12 @@ var Elements = {
   createText: function createText(_ref7) {
     var _ref7$textContent = _ref7.textContent,
         textContent = _ref7$textContent === void 0 ? ' ' : _ref7$textContent,
-        className = _ref7.className;
+        className = _ref7.className,
+        id = _ref7.id;
     var text = document.createElement('p');
     text.textContent = textContent;
     text.classList.add(className);
+    text.id = id;
     return text;
   },
   createImage: function createImage(_ref8) {
@@ -50535,12 +50537,10 @@ var Authenticator = /*#__PURE__*/function () {
       var firestore = (0, _firestore.getFirestore)();
       var email = document.getElementById('emailRegister').value;
       var pwd = document.getElementById('pwdRegister').value;
-      var username = document.getElementById('usernameRegister').value;
       var ref = (0, _firestore.doc)(firestore, 'AllUsers', email);
       (0, _firestore.setDoc)(ref, {
         Email: email,
-        passWord: pwd,
-        Username: username // profileURL: downloadURLVar,
+        passWord: pwd // profileURL: downloadURLVar,
         // imageFilename: namebox.value + ',' + extLab.innerHTML
 
       });
@@ -50550,7 +50550,7 @@ var Authenticator = /*#__PURE__*/function () {
 
         console.log(users);
       }).then(function () {
-        _Router.default.getRouter().navigate('/');
+        _Router.default.getRouter().navigate('/registerTwo');
       }).catch(function (error) {
         var errorCode = error.code;
         var errorMessage = error.message; // eslint-disable-next-line no-alert
@@ -50572,35 +50572,50 @@ var Authenticator = /*#__PURE__*/function () {
         // eslint-disable-next-line no-console
         console.log(userCredential); // signed in
         // eslint-disable-next-line no-alert
-
-        alert('logged In');
       }).then(function () {
         _Router.default.getRouter().navigate('/dashboard');
       }).catch(function (error) {
         var errorCode = error.code;
         var errorMessage = error.message; // eslint-disable-next-line no-alert
 
-        alert("Error ".concat(errorCode).concat(errorMessage));
+        console.log("Error ".concat(errorCode).concat(errorMessage));
       });
     }
   }, {
     key: "ineenfunctie",
     value: function ineenfunctie() {
       var auth = (0, _auth.getAuth)();
-      (0, _auth.onAuthStateChanged)(auth, function (user) {
-        if (user) {
-          // User is signed in, see docs for a list of available properties
-          // https://firebase.google.com/docs/reference/js/firebase.User
-          var email = user.email;
-          console.log(email); // ...
-        } // User is signed out
-        // ...
+      var user = auth.currentUser;
 
+      if (user !== null) {
+        var displayName = user.displayName;
+        var email = user.email;
+        var photoURL = user.photoURL;
+        var emailVerified = user.emailVerified;
+        console.log(displayName, email, photoURL, emailVerified);
+      } else {
+        console.log('no current user');
+      }
+    }
+  }, {
+    key: "updateUsername",
+    value: function updateUsername() {
+      var usernameke = document.getElementById('usernameRegister').value;
+      console.log(usernameke);
+      var auth = (0, _auth.getAuth)();
+      (0, _auth.updateProfile)(auth.currentUser, {
+        displayName: usernameke,
+        photoURL: 'profile.jpg'
+      }).then(function () {}).catch(function (error) {
+        var errorCode = error.code;
+        var errorMessage = error.message; // eslint-disable-next-line no-alert
+
+        console.log("Error ".concat(errorCode).concat(errorMessage));
       });
     }
     /**
-    * Login with Google
-    */
+     * Login with Google
+     */
 
   }, {
     key: "loginWithGoogle",
@@ -50758,17 +50773,12 @@ var HomePageComponent = /*#__PURE__*/function (_Component) {
           auth.login();
         }
       }); // facebook button
-
-
-      var loginButtonFacebook = _Elements.default.createButton({
-        className: 'welcomeBackContainer__btnFacebook',
-        textContent: 'f'
-      }); // google button
+      // google button
 
 
       var loginButtonGoogle = _Elements.default.createButton({
         className: 'welcomeBackContainer__btnGoogle',
-        textContent: 'G',
+        textContent: 'Login With Google',
         onClick: function onClick() {
           var auth = new _Authenticator.default();
           auth.loginWithGoogle();
@@ -50793,7 +50803,7 @@ var HomePageComponent = /*#__PURE__*/function (_Component) {
 
       var homePageWrapperTwo = _Elements.default.createContainer({
         className: 'welcomeBackContainer',
-        children: [headerContainerTwo, wrapperInputFields, loginButton, loginButtonFacebook, loginButtonGoogle, textContainerTwo, registerButton]
+        children: [headerContainerTwo, wrapperInputFields, loginButton, loginButtonGoogle, textContainerTwo, registerButton]
       }); // combine two wrappers
 
 
@@ -50819,6 +50829,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+var _auth = require("firebase/auth");
 
 var _Component2 = _interopRequireDefault(require("../library/Component"));
 
@@ -50896,20 +50908,34 @@ var DashboardComponent = /*#__PURE__*/function (_Component) {
       }); // content wrapper Two
 
 
-      var headerContainerTwo = _Elements.default.createHeader({
-        textContent: 'Hello,',
-        className: 'dashboardContainer__sloganOne'
-      });
-
       var textContainerTwo = _Elements.default.createText({
         textContent: 'Nice to have you back! ',
         className: 'dashboardContainer__text'
-      }); // wrapper Two
+      });
 
+      var showTheUsername = _Elements.default.createText({
+        id: 'heelkleinetekst',
+        className: 'dashboardContainer__sloganOne'
+      });
+
+      var auth = (0, _auth.getAuth)();
+
+      function showUsername() {
+        (0, _auth.onAuthStateChanged)(auth, function (user) {
+          if (user) {
+            var displayName = user.displayName;
+            showTheUsername.textContent = "Hello ".concat(displayName, ","); // ...
+          } else {// User is signed out
+            // ...
+          }
+        });
+      }
+
+      window.onload = showUsername(); // wrapper Two
 
       var homePageWrapperTwo = _Elements.default.createContainer({
         className: 'dashboardContainer',
-        children: [headerContainerTwo, textContainerTwo]
+        children: [showTheUsername, textContainerTwo]
       }); // content for the containers
 
 
@@ -51061,7 +51087,7 @@ var DashboardComponent = /*#__PURE__*/function (_Component) {
 
 var _default = DashboardComponent;
 exports.default = _default;
-},{"../library/Component":"library/Component.js","../library/Elements":"library/Elements.js","../images/logo.png":"images/logo.png","../Router":"Router.js","../library/Authenticator":"library/Authenticator.js"}],"components/registerPage.js":[function(require,module,exports) {
+},{"firebase/auth":"../node_modules/firebase/auth/dist/index.esm.js","../library/Component":"library/Component.js","../library/Elements":"library/Elements.js","../images/logo.png":"images/logo.png","../Router":"Router.js","../library/Authenticator":"library/Authenticator.js"}],"components/registerPage.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -51168,20 +51194,12 @@ var ReigsterPageComponent = /*#__PURE__*/function (_Component) {
         // text: 'password',
         placeholder: 'password',
         id: 'pwdRegister'
-      });
-
-      var inputFieldThree = _Elements.default.createInputField({
-        className: 'welcomeBackContainer__wrapperFields--inputfieldThree',
-        type: 'text',
-        // text: 'password',
-        placeholder: 'username',
-        id: 'usernameRegister'
       }); // Login button
 
 
       var loginButton = _Elements.default.createButton({
         className: 'welcomeBackContainer__btnLogin',
-        textContent: 'Register',
+        textContent: 'Next step',
         onClick: function onClick() {
           var auth = new _Authenticator.default();
           auth.register();
@@ -51200,7 +51218,7 @@ var ReigsterPageComponent = /*#__PURE__*/function (_Component) {
 
       var wrapperInputFields = _Elements.default.createContainer({
         className: 'welcomeBackContainer__wrapperFields',
-        children: [inputFieldOne, inputFieldTwo, inputFieldThree]
+        children: [inputFieldOne, inputFieldTwo]
       }); // wrapper Two
 
 
@@ -51521,7 +51539,8 @@ function addItemToList(userID, firstName, lastName, fileName, URLPath) {
   _picture.src = URLPath;
   _picture.id = 'picture';
   _userID.innerHTML = "UserID : ".concat(userID);
-  _firstName.innerHTML = " ".concat(firstName);
+  _firstName.innerHTML = "This photo is uploaded by ".concat(firstName);
+  _firstName.className = 'listItemsContainer__allContent--uploadedUsername';
   _lastName.innerHTML = "Lastname : ".concat(lastName);
   bt2n.className = 'listItemsContainer__allContent'; // _picture.innerHTML = 'Picture : ' + fileName;
 
@@ -56773,12 +56792,12 @@ var UploadPhotosComponent = /*#__PURE__*/function (_Component) {
 
 
       var headerContainerTwo = _Elements.default.createHeader({
-        textContent: 'Create Event',
+        textContent: 'Upload Photo',
         className: 'dashboardContainer__sloganOne'
       });
 
       var textContainerTwo = _Elements.default.createText({
-        textContent: 'and have a party to remember',
+        textContent: 'and share beautiful moments!',
         className: 'dashboardContainer__text'
       });
       /**
@@ -56793,18 +56812,27 @@ var UploadPhotosComponent = /*#__PURE__*/function (_Component) {
       var firestore = (0, _firestore.getFirestore)();
 
       var createtext = _Elements.default.createInput({
+        className: ' uploadContainer__inputFieldUpload',
+        placeholder: 'your Username',
         id: 'username',
         input: 'type'
       });
 
       var createInputFile = _Elements.default.createInput({
+        className: 'uploadContainer__uploadBtn',
         id: 'imgName',
         type: 'file'
       });
 
       var createUploadBtn = _Elements.default.createButton({
+        className: 'uploadContainer__uploadBtn',
         id: 'upBtn',
         textContent: 'upload'
+      });
+
+      var uploadPhotoContainer = _Elements.default.createContainer({
+        className: 'uploadContainer',
+        children: [createtext, createInputFile, createUploadBtn]
       });
 
       function getFileName(file) {
@@ -56861,6 +56889,8 @@ var UploadPhotosComponent = /*#__PURE__*/function (_Component) {
                     (0, _storage.getDownloadURL)(uploadTask.snapshot.ref).then(function (downloadURL) {
                       downloadURLVar = downloadURL;
                       addUser();
+
+                      _Router.default.getRouter().navigate('/memories');
                     });
                   });
 
@@ -56887,7 +56917,7 @@ var UploadPhotosComponent = /*#__PURE__*/function (_Component) {
 
       var createContainer = _Elements.default.createContainer({
         className: 'togheter',
-        children: [homePageWrapperOne, homePageWrapperTwo, createtext, createInputFile, createUploadBtn]
+        children: [homePageWrapperOne, homePageWrapperTwo, uploadPhotoContainer]
       });
 
       uploadPhotosContainer.appendChild(createContainer);
@@ -56900,7 +56930,161 @@ var UploadPhotosComponent = /*#__PURE__*/function (_Component) {
 
 var _default = UploadPhotosComponent;
 exports.default = _default;
-},{"firebase/firestore":"../node_modules/firebase/firestore/dist/index.esm.js","firebase/storage":"../node_modules/firebase/storage/dist/index.esm.js","../library/Component":"library/Component.js","../library/Elements":"library/Elements.js","../images/logo.png":"images/logo.png","../Router":"Router.js","../library/Authenticator":"library/Authenticator.js"}],"components/index.js":[function(require,module,exports) {
+},{"firebase/firestore":"../node_modules/firebase/firestore/dist/index.esm.js","firebase/storage":"../node_modules/firebase/storage/dist/index.esm.js","../library/Component":"library/Component.js","../library/Elements":"library/Elements.js","../images/logo.png":"images/logo.png","../Router":"Router.js","../library/Authenticator":"library/Authenticator.js"}],"components/registerTwo.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _Component2 = _interopRequireDefault(require("../library/Component"));
+
+var _Elements = _interopRequireDefault(require("../library/Elements"));
+
+var _backgroundImages = _interopRequireDefault(require("../images/backgroundImages2.png"));
+
+var _logo = _interopRequireDefault(require("../images/logo.png"));
+
+var _Authenticator = _interopRequireDefault(require("../library/Authenticator"));
+
+var _Router = _interopRequireDefault(require("../Router"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var ReigsterPageTwoComponent = /*#__PURE__*/function (_Component) {
+  _inherits(ReigsterPageTwoComponent, _Component);
+
+  var _super = _createSuper(ReigsterPageTwoComponent);
+
+  function ReigsterPageTwoComponent() {
+    _classCallCheck(this, ReigsterPageTwoComponent);
+
+    return _super.call(this, {
+      name: 'registerTwo',
+      routerPath: '/registerTwo'
+    });
+  }
+
+  _createClass(ReigsterPageTwoComponent, [{
+    key: "render",
+    value: function render() {
+      this.clearComponent(); // content wrapper One
+
+      var registerPageTwoContainer = document.createElement('div');
+
+      var header = _Elements.default.createImage({
+        newSource: _logo.default,
+        className: 'header__logo'
+      });
+
+      var firstImage = _Elements.default.createImage({
+        newSource: _backgroundImages.default,
+        className: 'header__photo'
+      }); // wrapper One
+
+
+      var homePageWrapperOne = _Elements.default.createContainer({
+        className: 'header',
+        children: [header, firstImage]
+      }); // content wrapper Two
+
+
+      var headerContainerTwo = _Elements.default.createHeader({
+        textContent: 'Register',
+        className: 'welcomeBackContainer__sloganOne',
+        id: 'test'
+      }); // inputfield one
+
+
+      var inputFieldThree = _Elements.default.createInputField({
+        className: 'welcomeBackContainer__wrapperFields--inputfieldTwo',
+        type: 'text',
+        // text: 'password',
+        placeholder: 'First Name',
+        id: 'firstNameRegister'
+      });
+
+      var inputFieldFour = _Elements.default.createInputField({
+        className: 'welcomeBackContainer__wrapperFields--inputfieldTwo',
+        type: 'text',
+        // text: 'password',
+        placeholder: 'Last Name',
+        id: 'lastNameRegister'
+      });
+
+      var inputFieldFive = _Elements.default.createInputField({
+        className: 'welcomeBackContainer__wrapperFields--inputfieldTwo',
+        type: 'text',
+        // text: 'password',
+        placeholder: 'username',
+        id: 'usernameRegister'
+      }); // Login button
+
+
+      var loginButton = _Elements.default.createButton({
+        className: 'welcomeBackContainer__btnLogin',
+        textContent: 'Register!',
+        onClick: function onClick() {
+          var test = new _Authenticator.default();
+          test.updateUsername();
+
+          _Router.default.getRouter().navigate('/');
+        }
+      }); // btn Register
+      // wrapper inputfields
+
+
+      var wrapperInputFields = _Elements.default.createContainer({
+        className: 'welcomeBackContainer__wrapperFields',
+        children: [inputFieldFour, inputFieldThree, inputFieldFive]
+      }); // wrapper Two
+
+
+      var homePageWrapperTwo = _Elements.default.createContainer({
+        className: 'welcomeBackContainer',
+        children: [headerContainerTwo, wrapperInputFields, loginButton]
+      }); // combine two wrappers
+
+
+      var createContainer = _Elements.default.createContainer({
+        className: 'togheter',
+        children: [homePageWrapperOne, homePageWrapperTwo]
+      });
+
+      registerPageTwoContainer.appendChild(createContainer);
+      return registerPageTwoContainer;
+    }
+  }]);
+
+  return ReigsterPageTwoComponent;
+}(_Component2.default);
+
+var _default = ReigsterPageTwoComponent;
+exports.default = _default;
+},{"../library/Component":"library/Component.js","../library/Elements":"library/Elements.js","../images/backgroundImages2.png":"images/backgroundImages2.png","../images/logo.png":"images/logo.png","../library/Authenticator":"library/Authenticator.js","../Router":"Router.js"}],"components/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -56948,6 +57132,12 @@ Object.defineProperty(exports, "ReigsterPageComponent", {
     return _registerPage.default;
   }
 });
+Object.defineProperty(exports, "ReigsterPageTwoComponent", {
+  enumerable: true,
+  get: function () {
+    return _registerTwo.default;
+  }
+});
 Object.defineProperty(exports, "SearchPartyComponent", {
   enumerable: true,
   get: function () {
@@ -56987,8 +57177,10 @@ var _createEvents = _interopRequireDefault(require("./createEvents"));
 
 var _uploadPhotos = _interopRequireDefault(require("./uploadPhotos"));
 
+var _registerTwo = _interopRequireDefault(require("./registerTwo"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./HomePage":"components/HomePage.js","./registerPage":"components/registerPage.js","./dashboard":"components/dashboard.js","./memories":"components/memories.js","./events":"components/events.js","./searchParty":"components/searchParty.js","./takeCare":"components/takeCare.js","./profileSettings":"components/profileSettings.js","./createEvents":"components/createEvents.js","./uploadPhotos":"components/uploadPhotos.js"}],"index.js":[function(require,module,exports) {
+},{"./HomePage":"components/HomePage.js","./registerPage":"components/registerPage.js","./dashboard":"components/dashboard.js","./memories":"components/memories.js","./events":"components/events.js","./searchParty":"components/searchParty.js","./takeCare":"components/takeCare.js","./profileSettings":"components/profileSettings.js","./createEvents":"components/createEvents.js","./uploadPhotos":"components/uploadPhotos.js","./registerTwo":"components/registerTwo.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _App = _interopRequireDefault(require("./App"));
@@ -57012,6 +57204,8 @@ var _profileSettings = _interopRequireDefault(require("./components/profileSetti
 var _createEvents = _interopRequireDefault(require("./components/createEvents"));
 
 var _components = require("./components");
+
+var _registerTwo = _interopRequireDefault(require("./components/registerTwo"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -57043,10 +57237,11 @@ var initApp = function initApp() {
   app.addComponent(new _profileSettings.default());
   app.addComponent(new _createEvents.default());
   app.addComponent(new _components.UploadPhotosComponent());
+  app.addComponent(new _registerTwo.default());
 };
 
 window.addEventListener('load', initApp);
-},{"./App":"App.js","./components/HomePage":"components/HomePage.js","./components/dashboard":"components/dashboard.js","./components/registerPage":"components/registerPage.js","./components/events":"components/events.js","./components/memories":"components/memories.js","./components/searchParty":"components/searchParty.js","./components/takeCare":"components/takeCare.js","./components/profileSettings":"components/profileSettings.js","./components/createEvents":"components/createEvents.js","./components":"components/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./App":"App.js","./components/HomePage":"components/HomePage.js","./components/dashboard":"components/dashboard.js","./components/registerPage":"components/registerPage.js","./components/events":"components/events.js","./components/memories":"components/memories.js","./components/searchParty":"components/searchParty.js","./components/takeCare":"components/takeCare.js","./components/profileSettings":"components/profileSettings.js","./components/createEvents":"components/createEvents.js","./components":"components/index.js","./components/registerTwo":"components/registerTwo.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

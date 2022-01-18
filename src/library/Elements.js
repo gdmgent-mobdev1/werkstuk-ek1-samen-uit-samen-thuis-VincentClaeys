@@ -51,10 +51,11 @@ const Elements = {
     header.id = id;
     return header;
   },
-  createText({ textContent = ' ', className }) {
+  createText({ textContent = ' ', className, id }) {
     const text = document.createElement('p');
     text.textContent = textContent;
     text.classList.add(className);
+    text.id = id;
 
     return text;
   },

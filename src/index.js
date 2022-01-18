@@ -30,6 +30,7 @@ import TakeCareComponent from './components/takeCare';
 import ProfileSettingsComponent from './components/profileSettings';
 import CreateEventComponent from './components/createEvents';
 import { UploadPhotosComponent } from './components';
+import ReigsterPageTwoComponent from './components/registerTwo';
 
 const initApp = () => {
   const appContainer = document.getElementById('container');
@@ -45,6 +46,7 @@ const initApp = () => {
   app.addComponent(new ProfileSettingsComponent());
   app.addComponent(new CreateEventComponent());
   app.addComponent(new UploadPhotosComponent());
+  app.addComponent(new ReigsterPageTwoComponent());
 };
 
 window.addEventListener('load', initApp);

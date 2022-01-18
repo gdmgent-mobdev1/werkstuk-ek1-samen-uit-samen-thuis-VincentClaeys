@@ -2,7 +2,7 @@
 import {
   createUserWithEmailAndPassword,
   getAuth, signInWithEmailAndPassword, signOut,
-  signInWithPopup, GoogleAuthProvider, onAuthStateChanged,
+  signInWithPopup, GoogleAuthProvider, updateProfile,
 
 }
   from 'firebase/auth';
@@ -19,12 +19,10 @@ class Authenticator {
 
     const email = document.getElementById('emailRegister').value;
     const pwd = document.getElementById('pwdRegister').value;
-    const username = document.getElementById('usernameRegister').value;
     const ref = doc(firestore, 'AllUsers', email);
     setDoc(ref, {
       Email: email,
       passWord: pwd,
-      Username: username,
 
       // profileURL: downloadURLVar,
       // imageFilename: namebox.value + ',' + extLab.innerHTML
@@ -38,7 +36,7 @@ class Authenticator {
         console.log(users);
       })
       .then(() => {
-        Router.getRouter().navigate('/');
+        Router.getRouter().navigate('/registerTwo');
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -63,7 +61,6 @@ class Authenticator {
         console.log(userCredential);
         // signed in
         // eslint-disable-next-line no-alert
-        alert('logged In');
       })
       .then(() => {
         Router.getRouter().navigate('/dashboard');
@@ -72,24 +69,41 @@ class Authenticator {
         const errorCode = error.code;
         const errorMessage = error.message;
         // eslint-disable-next-line no-alert
-        alert(`Error ${errorCode}${errorMessage}`);
+        console.log(`Error ${errorCode}${errorMessage}`);
       });
   }
 
   ineenfunctie() {
     const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-        const { email } = user;
-        console.log(email);
-      // ...
-      }
-      // User is signed out
-      // ...
+    const user = auth.currentUser;
+    if (user !== null) {
+      const { displayName } = user;
+      const { email } = user;
+      const { photoURL } = user;
+      const { emailVerified } = user;
+      console.log(displayName, email, photoURL, emailVerified);
+    } else {
+      console.log('no current user');
+    }
+  }
+
+  updateUsername() {
+    const usernameke = document.getElementById('usernameRegister').value;
+    console.log(usernameke);
+    const auth = getAuth();
+    updateProfile(auth.currentUser, {
+      displayName: usernameke, photoURL: 'profile.jpg',
+    }).then(() => {
+
+    }).catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // eslint-disable-next-line no-alert
+      console.log(`Error ${errorCode}${errorMessage}`);
     });
-  } /**
+  }
+
+  /**
    * Login with Google
    */
 

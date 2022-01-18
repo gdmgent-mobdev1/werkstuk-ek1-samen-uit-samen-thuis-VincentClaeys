@@ -84,6 +84,7 @@ class MemoriesComponent extends Component {
       },
 
     });
+
     const createdEvents = Elements.createList({
       id: 'list',
       className: 'listItemsContainer',

@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap");
 .header {
-  height: 40vh;
+  height: 30vh;
   position: relative;
 }
 .header__photo {
   width: 100%;
   object-fit: cover;
-  height: 40vh;
+  height: 30vh;
 }
 .header__logo {
   width: 7rem;
@@ -27,93 +27,76 @@
 }
 
 .welcomeBackContainer {
-  background-color: #495EAA;
-  height: 60vh;
+  background-color: #D8DBE8;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 .welcomeBackContainer__sloganOne {
   font-family: "Righteous", cursive;
-  color: #FFFFFF;
-  margin-left: 1.5rem;
+  color: #495EAA;
   font-size: 3rem;
   width: 50vw;
   padding-top: 30px;
 }
 .welcomeBackContainer__wrapperFields {
-  width: 50vw;
+  width: 70vw;
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
-  margin-left: 1.5rem;
+  justify-content: center;
 }
 .welcomeBackContainer__wrapperFields--inputfieldOne {
-  padding: 0.5rem;
-  border-radius: 0.4rem;
-  border-color: #FFFFFF;
+  padding: 0.7rem;
+  border-radius: 1.5rem;
+  border: 1rem;
+  border-color: #495EAA;
   color: #495EAA;
 }
 .welcomeBackContainer__wrapperFields--inputfieldTwo {
   margin-top: 1rem;
-  padding: 0.5rem;
-  border-radius: 0.4rem;
+  padding: 0.7rem;
+  border-radius: 1.5rem;
   border-color: #FFFFFF;
   color: #495EAA;
 }
 .welcomeBackContainer__btnLogin {
   font-family: "Righteous", cursive;
-  font-size: 0.5rem;
-  margin-left: 1.5rem;
+  font-size: 0.7rem;
   margin-top: 1rem;
-  padding: 0.5rem;
-  border-radius: 0.4rem;
-  background-color: #FFFFFF;
-  color: #495EAA;
+  padding: 0.7rem 1rem 0.7rem 1rem;
+  border-radius: 1.5rem;
+  border-color: #495EAA;
+  background-color: #495EAA;
+  color: #FFFFFF;
   display: flex;
-}
-.welcomeBackContainer__btnFacebook {
-  font-family: "Righteous", cursive;
-  height: 30px;
-  line-height: 30px;
-  width: 30px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border-radius: 50%;
-  color: #495EAA;
-  background-color: #FFFFFF;
-  text-align: center;
-  cursor: pointer;
-  margin-top: 2rem;
-  margin-left: 1.5rem;
 }
 .welcomeBackContainer__btnGoogle {
   font-family: "Righteous", cursive;
-  height: 30px;
-  line-height: 30px;
-  width: 30px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border-radius: 50%;
-  color: #495EAA;
-  background-color: #FFFFFF;
-  text-align: center;
-  cursor: pointer;
-  margin-top: 2rem;
-  margin-left: 0.5rem;
+  font-size: 0.7rem;
+  margin-top: 1rem;
+  padding: 0.7rem 5.5rem 0.7rem 5.5rem;
+  border-radius: 1.5rem;
+  background-color: #EA4335;
+  border-color: #EA4335;
+  color: #FFFFFF;
+  display: flex;
 }
 .welcomeBackContainer__text {
   font-family: "Righteous", cursive;
-  color: #FFFFFF;
-  margin-top: 2rem;
-  margin-left: 1.5rem;
+  color: #495EAA;
+  margin-top: 4rem;
 }
 .welcomeBackContainer__btnRegister {
   font-family: "Righteous", cursive;
-  font-size: 0.5rem;
-  margin-left: 1.5rem;
+  font-size: 0.7rem;
   margin-top: 1rem;
-  padding: 0.3rem;
-  border-radius: 0.4rem;
-  background-color: #FFFFFF;
-  color: #495EAA;
+  padding: 0.7rem;
+  border-radius: 1.5rem;
+  border-color: #495EAA;
+  background-color: #495EAA;
+  color: #FFFFFF;
   display: flex;
 }
 
@@ -224,7 +207,7 @@
 }
 .AllContainers__divThree--text {
   font-family: "Righteous", cursive;
-  color: #D8DBE8;
+  color: #FFFFFF;
   background-color: #495EAA;
   border: none;
   font-size: 0.7rem;
@@ -537,35 +520,131 @@
   align-items: center;
 }
 .listItemsContainer__allContent {
-  background-color: #D8DBE8;
-  color: #495EAA;
-  width: 80%;
-  border-radius: 0.4rem;
+  color: #FFFFFF;
+  width: 100%;
   font-family: "Righteous", cursive;
+  font-size: 3rem;
+  margin-top: 3rem;
+}
+.listItemsContainer__allContent--uploadedUsername {
+  font-family: "Righteous", cursive;
+  padding: 1rem;
   font-size: 1rem;
-  margin-bottom: 20px;
-  margin-top: 10px;
+  background-color: #495EAA;
 }
-.listItemsContainer__allContent--partyName {
-  font-size: 2rem;
-  margin-bottom: 20px;
+
+.dashboard {
+  height: 20vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.listItemsContainer__allContent--partyFrom {
-  font-family: "Quicksand", sans-serif;
-  margin-bottom: 10px;
+.dashboard__logo {
+  width: 7rem;
 }
-.listItemsContainer__allContent--date {
-  font-family: "Quicksand", sans-serif;
-  margin-bottom: 20px;
-}
-.listItemsContainer__allContent--btnDetail {
+.dashboard__btnLogOut {
+  margin-right: 3rem;
   font-family: "Righteous", cursive;
   font-size: 0.5rem;
   padding: 0.5rem;
   border-radius: 0.4rem;
   background-color: #495EAA;
   color: #FFFFFF;
+}
+
+.dashboardContainer__sloganOne {
+  font-family: "Righteous", cursive;
+  color: #495EAA;
+  margin-left: 1.5rem;
+  font-size: 3rem;
+  width: 100vw;
+}
+.dashboardContainer__text {
+  font-family: "Righteous", cursive;
+  color: #495EAA;
+  font-size: 0.8rem;
+  margin-left: 1.5rem;
+}
+
+.eventsPageWrapperThree {
+  display: flex;
+  justify-content: center;
+}
+.eventsPageWrapperThree__createEventContainer {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+.eventsPageWrapperThree__createEventContainer--ShowEventsBtn {
+  justify-content: center;
+  font-family: "Righteous", cursive;
+  font-size: 1rem;
+  padding: 1.5rem;
+  border-radius: 0.4rem;
   border: none;
+  background-color: #495EAA;
+  color: #FFFFFF;
+}
+.eventsPageWrapperThree__createEventContainer--createEventBtn {
+  justify-content: center;
+  font-family: "Righteous", cursive;
+  font-size: 1rem;
+  padding: 1.5rem;
+  border-radius: 0.4rem;
+  border: none;
+  background-color: #495EAA;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+#username {
+  padding: 0.7rem 8.3rem 0.7rem 0.7rem;
+  border-radius: 1.5rem;
+  border: 1px solid #495EAA;
+  color: #495EAA;
+}
+
+#imgName {
+  font-family: "Righteous", cursive;
+  font-size: 0.7rem;
+  margin-top: 1rem;
+  padding: 0.7rem;
+  border: 1px solid #495EAA;
+  border-radius: 1.5rem;
+  background-color: #FFFFFF;
+  color: #495EAA;
+}
+
+.uploadContainer {
+  margin-top: 2rem;
+  background-color: #D8DBE8;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 85%;
+  margin-left: 1.8rem;
+  border-radius: 1.5rem;
+}
+.uploadContainer__uploadBtn {
+  font-family: "Righteous", cursive;
+  font-size: 0.7rem;
+  margin-top: 5rem;
+  padding: 0.7rem;
+  border-radius: 1.5rem;
+  border-color: #495EAA;
+  background-color: #495EAA;
+  color: #FFFFFF;
+  width: 50%;
+  align-items: center;
+}
+.uploadContainer__inputFieldUpload {
+  padding: 0.7rem;
+  border-radius: 1.5rem;
+  border: 1rem;
+  border-color: #495EAA;
+  color: #495EAA;
 }
 
 .dashboard {
