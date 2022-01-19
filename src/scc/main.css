@@ -501,7 +501,7 @@
   font-family: "Righteous", cursive;
   font-size: 1rem;
   padding: 1.5rem;
-  border-radius: 0.4rem;
+  border-radius: 2.4rem;
   border: none;
   background-color: #495EAA;
   color: #FFFFFF;
@@ -622,6 +622,7 @@
   padding: 0.7rem 8.3rem 0.7rem 0.7rem;
   border-radius: 1.5rem;
   border: 1px solid #495EAA;
+  margin-bottom: 1rem;
 }
 #lastName::placeholder {
   color: #495EAA;

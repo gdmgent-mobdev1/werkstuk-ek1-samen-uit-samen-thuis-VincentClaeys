@@ -54,7 +54,7 @@ class MemoriesComponent extends Component {
       className: 'dashboardContainer__sloganOne',
     });
     const textContainerTwo = Elements.createText({
-      textContent: 'Check hier al jouw events! ',
+      textContent: 'Show beautiful moments with friends! ',
       className: 'dashboardContainer__text',
 
     });

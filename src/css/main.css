@@ -1,19 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap");
+
 .header {
   height: 30vh;
   position: relative;
 }
+
 .header__photo {
   width: 100%;
   object-fit: cover;
   height: 30vh;
 }
+
 .header__logo {
   width: 7rem;
   object-fit: cover;
   position: absolute;
 }
+
 .header__btnLogOut {
   font-family: "Righteous", cursive;
   font-size: 0.5rem;
@@ -33,6 +37,7 @@
   align-items: center;
   flex-direction: column;
 }
+
 .welcomeBackContainer__sloganOne {
   font-family: "Righteous", cursive;
   color: #495EAA;
@@ -40,6 +45,7 @@
   width: 50vw;
   padding-top: 30px;
 }
+
 .welcomeBackContainer__wrapperFields {
   width: 70vw;
   display: flex;
@@ -47,6 +53,7 @@
   margin-top: 2rem;
   justify-content: center;
 }
+
 .welcomeBackContainer__wrapperFields--inputfieldOne {
   padding: 0.7rem;
   border-radius: 1.5rem;
@@ -54,6 +61,7 @@
   border-color: #495EAA;
   color: #495EAA;
 }
+
 .welcomeBackContainer__wrapperFields--inputfieldTwo {
   margin-top: 1rem;
   padding: 0.7rem;
@@ -61,6 +69,7 @@
   border-color: #FFFFFF;
   color: #495EAA;
 }
+
 .welcomeBackContainer__btnLogin {
   font-family: "Righteous", cursive;
   font-size: 0.7rem;
@@ -72,6 +81,7 @@
   color: #FFFFFF;
   display: flex;
 }
+
 .welcomeBackContainer__btnGoogle {
   font-family: "Righteous", cursive;
   font-size: 0.7rem;
@@ -83,11 +93,13 @@
   color: #FFFFFF;
   display: flex;
 }
+
 .welcomeBackContainer__text {
   font-family: "Righteous", cursive;
   color: #495EAA;
   margin-top: 4rem;
 }
+
 .welcomeBackContainer__btnRegister {
   font-family: "Righteous", cursive;
   font-size: 0.7rem;
@@ -106,9 +118,11 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .dashboard__logo {
   width: 7rem;
 }
+
 .dashboard__btnLogOut {
   margin-right: 3rem;
   font-family: "Righteous", cursive;
@@ -126,6 +140,7 @@
   font-size: 3rem;
   width: 50vw;
 }
+
 .dashboardContainer__text {
   font-family: "Righteous", cursive;
   color: #495EAA;
@@ -143,21 +158,25 @@
   margin-left: 5vw;
   margin-top: 2rem;
 }
+
 .AllContainers__divOne {
   grid-area: 1/1/3/3;
   background-color: #495EAA;
   padding: 35px;
   border-radius: 20px;
 }
+
 .AllContainers__divOne .fas {
   color: #FFFFFF;
   font-size: 1.5rem;
   margin-left: 0.5rem;
 }
+
 .AllContainers__divOne--content {
   display: flex;
   flex-direction: column;
 }
+
 .AllContainers__divOne--text {
   font-family: "Righteous", cursive;
   color: #FFFFFF;
@@ -166,17 +185,20 @@
   font-size: 0.7rem;
   margin-top: 0.5rem;
 }
+
 .AllContainers__divTwo {
   grid-area: 1/3/3/7;
   background-color: #D8DBE8;
   border-radius: 20px;
 }
+
 .AllContainers__divTwo--content {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 5vh;
 }
+
 .AllContainers__divTwo--text {
   font-family: "Righteous", cursive;
   color: #495EAA;
@@ -185,26 +207,31 @@
   font-size: 0.7rem;
   margin-top: 0.5rem;
 }
+
 .AllContainers__divTwo .fas {
   color: #495EAA;
   font-size: 1.5rem;
 }
+
 .AllContainers__divThree {
   grid-area: 3/1/5/7;
   background-color: #495EAA;
   border-radius: 20px;
 }
+
 .AllContainers__divThree .fas {
   color: #FFFFFF;
   font-size: 1.5rem;
   margin-left: 0.5rem;
 }
+
 .AllContainers__divThree--content {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 5vh;
 }
+
 .AllContainers__divThree--text {
   font-family: "Righteous", cursive;
   color: #FFFFFF;
@@ -213,22 +240,26 @@
   font-size: 0.7rem;
   margin-top: 0.5rem;
 }
+
 .AllContainers__divFour {
   grid-area: 5/1/7/5;
   background-color: #D8DBE8;
   border-radius: 20px;
 }
+
 .AllContainers__divFour .fas {
   color: #495EAA;
   font-size: 1.5rem;
   margin-left: 0.5rem;
 }
+
 .AllContainers__divFour--content {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 5vh;
 }
+
 .AllContainers__divFour--text {
   font-family: "Righteous", cursive;
   color: #495EAA;
@@ -237,22 +268,26 @@
   font-size: 0.7rem;
   margin-top: 0.5rem;
 }
+
 .AllContainers__divFive {
   grid-area: 5/5/7/7;
   background-color: #495EAA;
   border-radius: 20px;
 }
+
 .AllContainers__divFive .fas {
   color: #FFFFFF;
   font-size: 1.5rem;
   margin-left: 0.5rem;
 }
+
 .AllContainers__divFive--content {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 5vh;
 }
+
 .AllContainers__divFive--text {
   font-family: "Righteous", cursive;
   color: #FFFFFF;
@@ -261,17 +296,20 @@
   font-size: 0.7rem;
   margin-top: 0.5rem;
 }
+
 .AllContainers__divSix {
   grid-area: 7/1/8/7;
   background-color: #FF0000;
   border-radius: 20px;
 }
+
 .AllContainers__divSix--content {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 0.7rem;
 }
+
 .AllContainers__divSix .panicButton {
   font-family: "Righteous", cursive;
   color: #FFFFFF;
@@ -287,9 +325,11 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .dashboard__logo {
   width: 7rem;
 }
+
 .dashboard__btnLogOut {
   margin-right: 3rem;
   font-family: "Righteous", cursive;
@@ -307,6 +347,7 @@
   font-size: 3rem;
   width: 100vw;
 }
+
 .dashboardContainer__text {
   font-family: "Righteous", cursive;
   color: #495EAA;
@@ -318,6 +359,7 @@
   display: flex;
   justify-content: center;
 }
+
 .container__card {
   width: 80%;
   margin-top: 50px;
@@ -326,18 +368,22 @@
   border-radius: 20px;
   box-shadow: 5px 5px 15px -5px #495EAA;
 }
+
 .container__card--containerImage {
   height: 150px;
   overflow: hidden;
   border-radius: 20px 20px 0px 0px;
 }
+
 .container__card--containerImage img {
   width: 100%;
   height: 100%;
 }
+
 .container__card--cardContent {
   margin-left: 1.5rem;
 }
+
 .container__card--cardContent--title {
   font-family: "Righteous", cursive;
   font-size: 2rem;
@@ -345,6 +391,7 @@
   color: #495EAA;
   margin-bottom: 10px;
 }
+
 .container__card--cardContent--headerDescriptionOne {
   font-family: "Righteous", cursive;
   font-size: 2rem;
@@ -352,38 +399,46 @@
   color: #495EAA;
   margin-bottom: 10px;
 }
+
 .container__card--cardContent--partyFrom {
   display: flex;
   color: #495EAA;
   font-family: "Righteous", cursive;
 }
+
 .container__card--cardContent--partyFrom--textPartyOne {
   margin-left: 20px;
   font-family: "Quicksand", sans-serif;
 }
+
 .container__card--cardContent--dateOne {
   display: flex;
   color: #495EAA;
 }
+
 .container__card--cardContent--dateOne--dateText {
   margin-left: 20px;
   font-family: "Quicksand", sans-serif;
 }
+
 .container__card--cardContent--likedParty {
   display: flex;
   color: #495EAA;
   font-family: "Righteous", cursive;
 }
+
 .container__card--cardContent--likedParty--likedText {
   margin-left: 20px;
   font-family: "Quicksand", sans-serif;
 }
+
 .container__card--cardContent--descriptionOne {
   font-family: "Quicksand", sans-serif;
   font-size: 0.7rem;
   color: #495EAA;
   width: 80%;
 }
+
 .container__card--cardContent--requestBtn {
   font-family: "Righteous", cursive;
   font-size: 0.5rem;
@@ -407,6 +462,7 @@
   flex-direction: column;
   align-items: center;
 }
+
 .listItemsContainer__content {
   background-color: #D8DBE8;
   color: #495EAA;
@@ -418,18 +474,22 @@
   font-size: 1rem;
   box-shadow: 5px 5px 15px -5px #495EAA;
 }
+
 .listItemsContainer__content--partyName {
   font-size: 2rem;
   margin-bottom: 20px;
 }
+
 .listItemsContainer__content--partyFrom {
   font-family: "Quicksand", sans-serif;
   margin-bottom: 10px;
 }
+
 .listItemsContainer__content--date {
   font-family: "Quicksand", sans-serif;
   margin-bottom: 20px;
 }
+
 .listItemsContainer__content--btnDetail {
   font-family: "Righteous", cursive;
   font-size: 0.5rem;
@@ -450,9 +510,11 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .dashboard__logo {
   width: 7rem;
 }
+
 .dashboard__btnLogOut {
   margin-right: 3rem;
   font-family: "Righteous", cursive;
@@ -470,6 +532,7 @@
   font-size: 3rem;
   width: 100vw;
 }
+
 .dashboardContainer__text {
   font-family: "Righteous", cursive;
   color: #495EAA;
@@ -481,11 +544,13 @@
   display: flex;
   justify-content: center;
 }
+
 .eventsPageWrapperThree__createEventContainer {
   width: 80%;
   display: flex;
   flex-direction: column;
 }
+
 .eventsPageWrapperThree__createEventContainer--ShowEventsBtn {
   justify-content: center;
   font-family: "Righteous", cursive;
@@ -496,12 +561,13 @@
   background-color: #495EAA;
   color: #FFFFFF;
 }
+
 .eventsPageWrapperThree__createEventContainer--createEventBtn {
   justify-content: center;
   font-family: "Righteous", cursive;
   font-size: 1rem;
   padding: 1.5rem;
-  border-radius: 0.4rem;
+  border-radius: 2.4rem;
   border: none;
   background-color: #495EAA;
   color: #FFFFFF;
@@ -519,6 +585,7 @@
   flex-direction: column;
   align-items: center;
 }
+
 .listItemsContainer__allContent {
   color: #FFFFFF;
   width: 100%;
@@ -526,6 +593,7 @@
   font-size: 3rem;
   margin-top: 3rem;
 }
+
 .listItemsContainer__allContent--uploadedUsername {
   font-family: "Righteous", cursive;
   padding: 1rem;
@@ -539,9 +607,11 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .dashboard__logo {
   width: 7rem;
 }
+
 .dashboard__btnLogOut {
   margin-right: 3rem;
   font-family: "Righteous", cursive;
@@ -559,6 +629,7 @@
   font-size: 3rem;
   width: 100vw;
 }
+
 .dashboardContainer__text {
   font-family: "Righteous", cursive;
   color: #495EAA;
@@ -570,11 +641,13 @@
   display: flex;
   justify-content: center;
 }
+
 .eventsPageWrapperThree__createEventContainer {
   width: 80%;
   display: flex;
   flex-direction: column;
 }
+
 .eventsPageWrapperThree__createEventContainer--ShowEventsBtn {
   justify-content: center;
   font-family: "Righteous", cursive;
@@ -585,6 +658,7 @@
   background-color: #495EAA;
   color: #FFFFFF;
 }
+
 .eventsPageWrapperThree__createEventContainer--createEventBtn {
   justify-content: center;
   font-family: "Righteous", cursive;
@@ -604,6 +678,7 @@
   border: 1px solid #495EAA;
   margin-bottom: 1rem;
 }
+
 #userID::placeholder {
   color: #495EAA;
 }
@@ -614,6 +689,7 @@
   border: 1px solid #495EAA;
   margin-bottom: 1rem;
 }
+
 #firstName::placeholder {
   color: #495EAA;
 }
@@ -622,7 +698,9 @@
   padding: 0.7rem 8.3rem 0.7rem 0.7rem;
   border-radius: 1.5rem;
   border: 1px solid #495EAA;
+  margin-bottom: 1rem;
 }
+
 #lastName::placeholder {
   color: #495EAA;
 }
@@ -632,6 +710,7 @@
   border-radius: 1.5rem;
   border: 1px solid #495EAA;
 }
+
 #username::placeholder {
   color: #495EAA;
 }
@@ -658,6 +737,7 @@
   margin-left: 1.8rem;
   border-radius: 1.5rem;
 }
+
 .uploadContainer__uploadBtn {
   font-family: "Righteous", cursive;
   font-size: 0.7rem;
@@ -670,6 +750,7 @@
   width: 50%;
   align-items: center;
 }
+
 .uploadContainer__inputFieldUpload {
   padding: 0.7rem;
   border-radius: 1.5rem;
@@ -684,9 +765,11 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .dashboard__logo {
   width: 7rem;
 }
+
 .dashboard__btnLogOut {
   margin-right: 3rem;
   font-family: "Righteous", cursive;
@@ -704,6 +787,7 @@
   font-size: 3rem;
   width: 100vw;
 }
+
 .dashboardContainer__text {
   font-family: "Righteous", cursive;
   color: #495EAA;
@@ -715,27 +799,30 @@
   display: flex;
   justify-content: center;
 }
+
 .eventsPageWrapperThree__createEventContainer {
   width: 80%;
   display: flex;
   flex-direction: column;
 }
+
 .eventsPageWrapperThree__createEventContainer--ShowEventsBtn {
   justify-content: center;
   font-family: "Righteous", cursive;
   font-size: 1rem;
   padding: 1.5rem;
-  border-radius: 0.4rem;
+  border-radius: 3.4rem;
   border: none;
   background-color: #495EAA;
   color: #FFFFFF;
 }
+
 .eventsPageWrapperThree__createEventContainer--createEventBtn {
   justify-content: center;
   font-family: "Righteous", cursive;
   font-size: 1rem;
   padding: 1.5rem;
-  border-radius: 0.4rem;
+  border-radius: 3.4rem;
   border: none;
   background-color: #495EAA;
   color: #FFFFFF;

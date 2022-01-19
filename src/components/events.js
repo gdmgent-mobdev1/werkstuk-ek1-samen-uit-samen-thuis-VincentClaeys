@@ -55,7 +55,7 @@ class EventsComponent extends Component {
       className: 'dashboardContainer__sloganOne',
     });
     const textContainerTwo = Elements.createText({
-      textContent: 'Check hier al jouw events! ',
+      textContent: 'Check your events! ',
       className: 'dashboardContainer__text',
 
     });

@@ -196,7 +196,7 @@ class DashboardComponent extends Component {
       textContent: ' PANIC BUTTON',
       className: 'panicButton',
       onClick: () => {
-        alert('alert has been sent, the police have been notified');
+
       },
 
     });

@@ -53,7 +53,7 @@ class TakeCareComponent extends Component {
       className: 'dashboardContainer__sloganOne',
     });
     const textContainerTwo = Elements.createText({
-      textContent: 'Iets ongepast meegemaakt? meld het hier! ',
+      textContent: 'report unwanted situations',
       className: 'dashboardContainer__text',
 
     });
