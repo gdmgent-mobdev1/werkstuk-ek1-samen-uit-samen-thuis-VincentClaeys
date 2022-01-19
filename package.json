@@ -23,6 +23,8 @@
     "babel-polyfill": "^6.26.0",
     "babel-regenerator-runtime": "^6.5.0",
     "firebase": "^9.6.1",
+    "firebase-tools": "^10.1.0",
+    "install": "^0.13.0",
     "navigo": "^8.11.1",
     "regenerator-runtime": "^0.13.9"
   }
