@@ -52,6 +52,7 @@ class ReigsterPageComponent extends Component {
     // inputfield one
     const inputFieldOne = Elements.createInputField({
       className: 'welcomeBackContainer__wrapperFields--inputfieldOne',
+      type: 'email',
       id: 'emailRegister',
       placeholder: 'E-mail',
     });

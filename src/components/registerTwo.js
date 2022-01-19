@@ -52,14 +52,14 @@ class ReigsterPageTwoComponent extends Component {
       className: 'welcomeBackContainer__wrapperFields--inputfieldTwo',
       type: 'text',
       // text: 'password',
-      placeholder: 'First Name',
+      placeholder: 'Last Name',
       id: 'firstNameRegister',
     });
     const inputFieldFour = Elements.createInputField({
       className: 'welcomeBackContainer__wrapperFields--inputfieldTwo',
       type: 'text',
       // text: 'password',
-      placeholder: 'Last Name',
+      placeholder: 'First Name',
       id: 'lastNameRegister',
     });
     const inputFieldFive = Elements.createInputField({

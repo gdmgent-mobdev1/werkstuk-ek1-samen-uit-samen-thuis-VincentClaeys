@@ -36,8 +36,21 @@ const Elements = {
     label.textContent = textContent;
   },
 
-  createInput({ type, id, placeholder = '' }) {
+  createInput({
+    type, id, placeholder = '',
+  }) {
     const input = document.createElement('input');
+
+    input.type = type;
+    input.placeholder = placeholder;
+    input.id = id;
+    return input;
+  },
+  createInputField({
+    type, id, placeholder = '', className,
+  }) {
+    const input = document.createElement('input');
+    input.classList.add(className);
     input.type = type;
     input.placeholder = placeholder;
     input.id = id;
@@ -70,17 +83,6 @@ const Elements = {
 
     if (onClick) picture.addEventListener('click', () => { onClick(); });
     return picture;
-  },
-
-  createInputField({
-    className, type, text, placeholder, id = '',
-  }) {
-    const inputField = document.createElement('input');
-    inputField.classList.add(className);
-    inputField.setAttribute(type, text);
-    inputField.placeholder = placeholder;
-    inputField.id = id;
-    return inputField;
   },
 
   createContainer({

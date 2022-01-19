@@ -60,22 +60,26 @@ class CreateEventComponent extends Component {
     });
     // inputifelds
     const inputUserId = Elements.createInput({
+      className: ' uploadContainer__inputFieldUpload',
       type: 'text',
       id: 'userID',
       placeholder: 'Event Name',
     });
     const firstnameInput = Elements.createInput({
+      className: ' uploadContainer__inputFieldUpload',
       type: 'text',
       id: 'firstName',
       placeholder: 'Your name',
     });
     const lastNameInput = Elements.createInput({
+      className: ' uploadContainer__inputFieldUpload',
       type: 'text',
       id: 'lastName',
       placeholder: 'Date',
     });
 
     const createEventBtn = Elements.createButton({
+      className: 'uploadContainer__uploadBtn',
       textContent: 'Create Event',
       id: 'createEvent',
       onClick: () => {
@@ -87,11 +91,16 @@ class CreateEventComponent extends Component {
       },
     });
 
+    const uploadPhotoContainer = Elements.createContainer({
+      className: 'uploadContainer',
+      children: [inputUserId, firstnameInput, lastNameInput, createEventBtn],
+    });
+
     // wrapper Two
     const homePageWrapperTwo = Elements.createContainer({
       className: 'dashboardContainer',
       children: [headerContainerTwo,
-        textContainerTwo, inputUserId, firstnameInput, lastNameInput, createEventBtn],
+        textContainerTwo, uploadPhotoContainer],
 
     });
 

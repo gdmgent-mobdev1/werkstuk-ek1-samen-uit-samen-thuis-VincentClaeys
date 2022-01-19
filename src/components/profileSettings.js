@@ -49,11 +49,11 @@ class ProfileSettingsComponent extends Component {
 
     // content wrapper Two
     const headerContainerTwo = Elements.createHeader({
-      textContent: 'Profile settings',
+      textContent: 'Profile',
       className: 'dashboardContainer__sloganOne',
     });
     const textContainerTwo = Elements.createText({
-      textContent: 'Check hier al jouw events! ',
+      textContent: 'Change your profile here! ',
       className: 'dashboardContainer__text',
 
     });

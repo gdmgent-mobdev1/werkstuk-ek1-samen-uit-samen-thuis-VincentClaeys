@@ -195,6 +195,9 @@ class DashboardComponent extends Component {
     const contentForContainerEventsSix = Elements.createButton({
       textContent: ' PANIC BUTTON',
       className: 'panicButton',
+      onClick: () => {
+        alert('alert has been sent, the police have been notified');
+      },
 
     });
 

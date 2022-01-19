@@ -23,8 +23,8 @@ import Authenticator from '../library/Authenticator';
 class UploadPhotosComponent extends Component {
   constructor() {
     super({
-      name: 'uploadPhoto',
-      routerPath: '/uploadPhoto',
+      name: 'uploadPhotos',
+      routerPath: '/uploadPhotos',
     });
   }
 
@@ -80,7 +80,7 @@ class UploadPhotosComponent extends Component {
       className: ' uploadContainer__inputFieldUpload',
       placeholder: 'your Username',
       id: 'username',
-      input: 'type',
+      type: 'text',
     });
     const createInputFile = Elements.createInput({
       className: 'uploadContainer__uploadBtn',
@@ -120,7 +120,7 @@ class UploadPhotosComponent extends Component {
       })
 
         .then(() => {
-          alert('record added');
+
         })
         .catch((error) => {
           alert(`error${error}`);

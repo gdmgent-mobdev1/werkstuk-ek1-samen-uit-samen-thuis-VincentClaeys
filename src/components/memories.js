@@ -71,7 +71,7 @@ class MemoriesComponent extends Component {
       className: 'eventsPageWrapperThree__createEventContainer--createEventBtn',
       textContent: 'Upload your photo',
       onClick: () => {
-        Router.getRouter().navigate('/uploadPhoto');
+        Router.getRouter().navigate('/uploadPhotos');
       },
 
     });

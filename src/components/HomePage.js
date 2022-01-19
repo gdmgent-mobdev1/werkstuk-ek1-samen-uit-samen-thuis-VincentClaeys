@@ -52,7 +52,7 @@ class HomePageComponent extends Component {
     const inputFieldOne = Elements.createInputField({
       className: 'welcomeBackContainer__wrapperFields--inputfieldOne',
       type: 'email',
-      placeholder: 'username',
+      placeholder: 'E-mail',
       id: 'email',
     });
 

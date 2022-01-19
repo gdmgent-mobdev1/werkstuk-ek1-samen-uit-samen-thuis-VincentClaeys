@@ -4,12 +4,51 @@
 
 @use 'sass:map';
 
+#userID {
+    padding: 0.7rem 8.3rem 0.7rem 0.7rem;
+    border-radius: 1.5rem;
+    border: 1px solid map.get($map: vars.$colors, $key: color2);
+    margin-bottom: 1rem;
+
+    &::placeholder {
+        color: map.get($map: vars.$colors, $key: color2);
+
+    }
+}
+
+#firstName {
+    padding: 0.7rem 8.3rem 0.7rem 0.7rem;
+    border-radius: 1.5rem;
+    border: 1px solid map.get($map: vars.$colors, $key: color2);
+    margin-bottom: 1rem;
+
+    &::placeholder {
+        color: map.get($map: vars.$colors, $key: color2);
+
+    }
+
+}
+
+#lastName {
+    padding: 0.7rem 8.3rem 0.7rem 0.7rem;
+    border-radius: 1.5rem;
+    border: 1px solid map.get($map: vars.$colors, $key: color2);
+
+    &::placeholder {
+        color: map.get($map: vars.$colors, $key: color2);
+
+    }
+}
 
 #username {
     padding: 0.7rem 8.3rem 0.7rem 0.7rem;
     border-radius: 1.5rem;
     border: 1px solid map.get($map: vars.$colors, $key: color2);
-    color: map.get($map: vars.$colors, $key: color2);
+
+    &::placeholder {
+        color: map.get($map: vars.$colors, $key: color2);
+
+    }
 }
 
 #imgName {
